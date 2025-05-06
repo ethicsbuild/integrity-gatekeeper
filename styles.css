@@ -1,139 +1,61 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Integrity Gatekeeper</title>
-  <link rel="stylesheet" href="styles.css" />
-</head>
-<body>
-  <div class="content">
-    <h1 class="main-title">Integrity Gatekeeper</h1>
-    <h2 class="phase-title">Phase I</h2>
-    <div class="question">
-      <p>1. What does integrity mean to you?</p>
-      <textarea id="q1"></textarea>
-    </div>
-    <div class="question">
-      <p>2. When was the last time you apologized and meant it?</p>
-      <textarea id="q2"></textarea>
-    </div>
-    <div class="question">
-      <p>3. Describe a moment you stood up for what was right.</p>
-      <textarea id="q3"></textarea>
-    </div>
-    <div class="question">
-      <p>4. How do you handle situations when no one is watching?</p>
-      <textarea id="q4"></textarea>
-    </div>
-    <div class="question">
-      <p>5. Have you ever admitted a mistake before it was discovered?</p>
-      <textarea id="q5"></textarea>
-    </div>
-    <div class="question">
-      <p>6. What values guide your daily decisions?</p>
-      <textarea id="q6"></textarea>
-    </div>
-    <div class="question">
-      <p>7. How do you define honesty in your life?</p>
-      <textarea id="q7"></textarea>
-    </div>
-    <div class="question">
-      <p>8. When have you chosen to do the right thing despite difficulty?</p>
-      <textarea id="q8"></textarea>
-    </div>
-    <div class="question">
-      <p>9. What role does trust play in your relationships?</p>
-      <textarea id="q9"></textarea>
-    </div>
-    <div class="question">
-      <p>10. When have you chosen to tell a difficult truth?</p>
-      <textarea id="q10"></textarea>
-    </div>
+/* styles.css */
 
-    <h2 class="phase-title">Phase II</h2>
-    <div class="question">
-      <p>11. How do you react when your integrity is challenged?</p>
-      <textarea id="q11"></textarea>
-    </div>
-    <div class="question">
-      <p>12. Describe a time you kept a promise against all odds.</p>
-      <textarea id="q12"></textarea>
-    </div>
-    <div class="question">
-      <p>13. What does accountability mean to you?</p>
-      <textarea id="q13"></textarea>
-    </div>
-    <div class="question">
-      <p>14. How do you rebuild trust after it has been broken?</p>
-      <textarea id="q14"></textarea>
-    </div>
-    <div class="question">
-      <p>15. When have you had to make a sacrifice for your principles?</p>
-      <textarea id="q15"></textarea>
-    </div>
-    <div class="question">
-      <p>16. How do you handle peer pressure that conflicts with your values?</p>
-      <textarea id="q16"></textarea>
-    </div>
-    <div class="question">
-      <p>17. What does courage mean in the context of integrity?</p>
-      <textarea id="q17"></textarea>
-    </div>
-    <div class="question">
-      <p>18. Describe a situation where you had to admit you were wrong.</p>
-      <textarea id="q18"></textarea>
-    </div>
-    <div class="question">
-      <p>19. How do you ensure consistency in your ethical behavior?</p>
-      <textarea id="q19"></textarea>
-    </div>
-    <div class="question">
-      <p>20. What lessons have you learned from a failure of integrity?</p>
-      <textarea id="q20"></textarea>
-    </div>
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f6f8;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
 
-    <h2 class="phase-title">Phase III</h2>
-    <div class="question">
-      <p>21. How do you inspire integrity in others?</p>
-      <textarea id="q21"></textarea>
-    </div>
-    <div class="question">
-      <p>22. What role does empathy play in maintaining integrity?</p>
-      <textarea id="q22"></textarea>
-    </div>
-    <div class="question">
-      <p>23. Describe a time you had to confront unethical behavior.</p>
-      <textarea id="q23"></textarea>
-    </div>
-    <div class="question">
-      <p>24. How do you balance honesty with kindness?</p>
-      <textarea id="q24"></textarea>
-    </div>
-    <div class="question">
-      <p>25. What is your personal code of ethics?</p>
-      <textarea id="q25"></textarea>
-    </div>
-    <div class="question">
-      <p>26. How do you handle conflicts between your values and societal expectations?</p>
-      <textarea id="q26"></textarea>
-    </div>
-    <div class="question">
-      <p>27. When have you taken responsibility for someone else’s mistake?</p>
-      <textarea id="q27"></textarea>
-    </div>
-    <div class="question">
-      <p>28. What does integrity mean in leadership?</p>
-      <textarea id="q28"></textarea>
-    </div>
-    <div class="question">
-      <p>29. How do you stay true to yourself in challenging times?</p>
-      <textarea id="q29"></textarea>
-    </div>
-    <div class="question">
-      <p>30. What legacy of integrity do you want to leave behind?</p>
-      <textarea id="q30"></textarea>
-    </div>
-  </div>
-</body>
-</html>
+.content {
+  max-width: 800px;
+  margin: 40px auto;
+  background-color: #fff;
+  padding: 30px 40px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.main-title {
+  text-align: center;
+  font-size: 2.8rem;
+  margin-bottom: 20px;
+  color: #2c3e50;
+}
+
+.phase-title {
+  font-size: 1.8rem;
+  margin-top: 40px;
+  margin-bottom: 25px;
+  border-bottom: 2px solid #2980b9;
+  padding-bottom: 5px;
+  color: #2980b9;
+}
+
+.question {
+  margin-bottom: 25px;
+}
+
+.question p {
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+textarea {
+  width: 100%;
+  min-height: 80px;
+  padding: 10px 12px;
+  font-size: 1rem;
+  border: 1.5px solid #ccc;
+  border-radius: 6px;
+  resize: vertical;
+  transition: border-color 0.3s ease;
+}
+
+textarea:focus {
+  border-color: #2980b9;
+  outline: none;
+  background-color: #eaf4fb;
+}
