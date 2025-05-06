@@ -1,153 +1,164 @@
-/* Reset and Base */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
+/* Global Styles */
 body {
-  font-family: Georgia, serif;
-  background-color: #fdf6e3; /* Warm parchment tone */
-  color: #111;
-  line-height: 1.6;
+    font-family: 'Georgia', serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f5e7; /* Parchment paper color */
+    color: #333;
+    overflow-x: hidden;
 }
 
-/* Layout */
+/* Page layout - critical fix */
+#disclaimer-page, #gatekeeper-page, #phase1-page, #phase2-page, #phase3-page {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    display: none;
+    opacity: 0;
+    transition: opacity 1.5s ease;
+}
+
+/* Content containers */
 .content {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 3rem 2rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
+    max-width: 700px;
+    margin: 2rem auto;
+    padding: 2rem;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.85);
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
 }
 
-/* Logo */
-.logo {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 2rem;
+/* Disclaimer page specific */
+#disclaimer-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.logo img {
-  width: 150px;
-  height: auto;
+#disclaimer-page .content {
+    width: 90%;
+    max-width: 600px;
 }
 
-/* Titles */
-h1 {
-  font-size: 2.75rem;
-  font-weight: bold;
-  text-align: center;
-  color: #2c3e50;
-  margin-bottom: 1rem;
+/* Header container for phase pages */
+.header-container {
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 1rem;
 }
 
 .main-title {
-  font-size: 2.75rem;
-  font-weight: bold;
-  text-align: center;
-  color: #2c3e50;
-  margin-bottom: 0.5rem;
-}
-h1 {
-  font-size: 2.75rem;
-  font-weight: bold;
-  text-align: center;
-  color: #2c3e50;
-  margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
+    font-size: 2.4rem; /* Increased size from 2rem */
+    letter-spacing: 1px;
 }
 
 .phase-title {
-  font-size: 1.5rem;
-  font-style: italic;
-  color: #555;
-  text-align: center;
-  margin-bottom: 2rem;
-}
-
-/* Paragraphs */
-p {
-  font-size: 1.1rem;
-  margin: 1em 0;
-}
-
-/* Disclaimer */
-#disclaimer-page .content {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  min-height: 100vh;
-  text-align: center;
+    font-size: 1.5rem;
+    margin-top: 0;
+    font-weight: normal;
 }
 
 /* Buttons */
 button {
-  background-color: #111;
-  color: #fff;
-  padding: 0.75rem 1.5rem;
-  font-size: 1rem;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-top: 2em;
-  transition: background-color 0.3s ease;
+    background-color: #333;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    margin: 1.5rem 0;
+    border: none;
+    border-radius: 0;
+    font-family: inherit;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: inline-block;
 }
 
 button:hover {
-  background-color: #333;
+    background-color: #555;
 }
 
-/* Questions */
+/* Questions styling */
 .question {
-  width: 100%;
-  margin-bottom: 2rem;
-  text-align: left;
-  font-size: 1.1rem;
-  border-bottom: 1px solid #e2e2e2;
-  padding-bottom: 1rem;
-}
-
-.question p {
-  font-weight: bold;
-  margin-bottom: 0.5rem;
-  font-size: 1.1rem;
+    margin-bottom: 2rem;
+    text-align: left;
 }
 
 textarea {
-  width: 100%;
-  min-height: 100px;
-  padding: 1rem;
-  font-size: 1rem;
-  font-family: Georgia, serif;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  resize: vertical;
-  background-color: #fffefc;
-  box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
-  margin-top: 0.5rem;
-}
-/* Questions Wrapper */
-.questions-wrapper {
-  background-color: #fffefc;
-  padding: 2rem 3rem;
-  margin-top: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    width: 100%;
+    min-height: 100px;
+    background-color: white;
+    color: #333;
+    border: 1px solid #ccc;
+    padding: 0.75rem;
+    resize: vertical;
+    font-family: inherit;
+    box-sizing: border-box;
 }
 
-/* Animation */
-#disclaimer-page,
-#gatekeeper-page,
-#phase1-page,
-#phase2-page,
-#phase3-page {
-  opacity: 0;
-  transition: opacity 1.5s ease-in-out;
+/* Typography */
+h1 {
+    font-size: 2.4rem; /* Increased size from 2rem */
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
 }
-.question-page {
-  display: block;
-  opacity: 1 !important;
-  padding-top: 2rem;
+
+p {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+/* Logo styling */
+.logo {
+    margin: 0 auto 2rem auto;
+    width: 120px;
+    height: 120px;
+}
+
+.logo img {
+    width: 100%;
+    height: auto;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .content {
+        width: 90%;
+        padding: 1.5rem;
+        margin: 1rem auto;
+    }
+    
+    h1, .main-title {
+        font-size: 2rem;
+    }
+    
+    .phase-title {
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .content {
+        width: 95%;
+        padding: 1rem;
+        margin: 0.5rem auto;
+    }
+    
+    h1, .main-title {
+        font-size: 1.8rem;
+    }
+    
+    .phase-title {
+        font-size: 1.2rem;
+    }
+    
+    button {
+        width: 100%;
+    }
 }
