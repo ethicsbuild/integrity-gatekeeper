@@ -1,0 +1,132 @@
+/* Global Styles */
+body {
+    font-family: 'Georgia', serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f5e7; /* Parchment paper color */
+    color: #333;
+    overflow-x: hidden;
+}
+
+/* Page layout - critical fix */
+#disclaimer-page, #gatekeeper-page, #phase1-page, #phase2-page, #phase3-page {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    display: none;
+    opacity: 0;
+    transition: opacity 1.5s ease;
+}
+
+/* Content containers */
+.content {
+    max-width: 700px;
+    margin: 2rem auto;
+    padding: 2rem;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.85);
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+/* Disclaimer page specific */
+#disclaimer-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#disclaimer-page .content {
+    width: 90%;
+    max-width: 600px;
+}
+
+/* Buttons */
+button {
+    background-color: #333;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    margin: 1.5rem 0;
+    border: none;
+    border-radius: 0;
+    font-family: inherit;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: inline-block;
+}
+
+button:hover {
+    background-color: #555;
+}
+
+/* Questions styling */
+.question {
+    margin-bottom: 2rem;
+    text-align: left;
+}
+
+textarea {
+    width: 100%;
+    min-height: 100px;
+    background-color: white;
+    color: #333;
+    border: 1px solid #ccc;
+    padding: 0.75rem;
+    resize: vertical;
+    font-family: inherit;
+    box-sizing: border-box;
+}
+
+/* Typography */
+h1 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+}
+
+p {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+/* Logo styling */
+.logo {
+    margin: 0 auto 2rem auto;
+    width: 120px;
+    height: 120px;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .content {
+        width: 90%;
+        padding: 1.5rem;
+        margin: 1rem auto;
+    }
+    
+    h1 {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .content {
+        width: 95%;
+        padding: 1rem;
+        margin: 0.5rem auto;
+    }
+    
+    h1 {
+        font-size: 1.6rem;
+    }
+    
+    button {
+        width: 100%;
+    }
+}
