@@ -1,4 +1,12 @@
-/* Custom alert styling */
+/* Validation styling */
+.validation-error {
+    border: 2px solid #ff3333;
+    background-color: rgba(255, 0, 0, 0.05);
+}
+
+.validation-alert h2 {
+    color: #ff3333;
+}/* Custom alert styling */
 .custom-alert-overlay {
     position: fixed;
     top: 0;

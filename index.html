@@ -107,7 +107,7 @@
                 <textarea id="q10"></textarea>
             </div>
             
-            <button onclick="showPage('phase2-page')">Continue to Phase II</button>
+            <button onclick="validateAndProceed('phase1-page', 'phase2-page', 1)">Continue to Phase II</button>
         </div>
     </div>
     
@@ -169,7 +169,7 @@
                 <textarea id="q20"></textarea>
             </div>
             
-            <button onclick="showPage('phase3-page')">Continue to Phase III</button>
+            <button onclick="validateAndProceed('phase2-page', 'phase3-page', 11)">Continue to Phase III</button>
         </div>
     </div>
     
@@ -282,8 +282,124 @@
             }
         }
         
+        function validateAndProceed(currentPhaseId, nextPhaseId, startQuestionNum) {
+            // Get all textareas in the current phase
+            const currentPhase = document.querySelector(`div[id="${currentPhaseId}"]:not([style*="display: none"])`);
+            const textareas = currentPhase.querySelectorAll('textarea');
+            
+            // Check if any textarea is empty
+            let emptyFields = [];
+            textareas.forEach((textarea, index) => {
+                if (!textarea.value.trim()) {
+                    textarea.classList.add('validation-error');
+                    emptyFields.push(index + startQuestionNum);
+                } else {
+                    textarea.classList.remove('validation-error');
+                }
+            });
+            
+            // If there are empty fields, show validation message
+            if (emptyFields.length > 0) {
+                // Create validation alert
+                const overlay = document.createElement('div');
+                overlay.className = 'custom-alert-overlay';
+                
+                const alertBox = document.createElement('div');
+                alertBox.className = 'custom-alert validation-alert';
+                
+                const title = document.createElement('h2');
+                title.textContent = 'Incomplete Reflection';
+                
+                let message;
+                if (emptyFields.length === 1) {
+                    message = document.createElement('p');
+                    message.textContent = `Please answer question ${emptyFields[0]} before proceeding.`;
+                } else {
+                    message = document.createElement('p');
+                    message.textContent = `Please answer questions ${emptyFields.join(', ')} before proceeding.`;
+                }
+                
+                const button = document.createElement('button');
+                button.className = 'custom-alert-button';
+                button.textContent = 'Return to Questions';
+                button.onclick = function() {
+                    document.body.removeChild(overlay);
+                };
+                
+                // Assemble the alert
+                alertBox.appendChild(title);
+                alertBox.appendChild(message);
+                alertBox.appendChild(button);
+                overlay.appendChild(alertBox);
+                
+                // Add to the page
+                document.body.appendChild(overlay);
+                
+                return false; // Return false if validation fails
+            }
+            
+            // If all fields are filled, proceed
+            showPage(nextPhaseId);
+            return true;
+        }
+        
         function submitReflection() {
-            // Create custom alert elements
+            // Get all textareas in the current phase
+            const currentPhase = document.querySelector('div[id="phase3-page"]:not([style*="display: none"])');
+            const textareas = currentPhase.querySelectorAll('textarea');
+            
+            // Check if any textarea is empty
+            let emptyFields = [];
+            textareas.forEach((textarea, index) => {
+                if (!textarea.value.trim()) {
+                    textarea.classList.add('validation-error');
+                    emptyFields.push(index + 21); // Adding 21 because we're in Phase 3 (questions 21-30)
+                } else {
+                    textarea.classList.remove('validation-error');
+                }
+            });
+            
+            // If there are empty fields, show validation message
+            if (emptyFields.length > 0) {
+                // Create validation alert
+                const overlay = document.createElement('div');
+                overlay.className = 'custom-alert-overlay';
+                
+                const alertBox = document.createElement('div');
+                alertBox.className = 'custom-alert validation-alert';
+                
+                const title = document.createElement('h2');
+                title.textContent = 'Incomplete Reflection';
+                
+                let message;
+                if (emptyFields.length === 1) {
+                    message = document.createElement('p');
+                    message.textContent = `Please answer question ${emptyFields[0]} before submitting your reflection.`;
+                } else {
+                    message = document.createElement('p');
+                    message.textContent = `Please answer questions ${emptyFields.join(', ')} before submitting your reflection.`;
+                }
+                
+                const button = document.createElement('button');
+                button.className = 'custom-alert-button';
+                button.textContent = 'Return to Questions';
+                button.onclick = function() {
+                    document.body.removeChild(overlay);
+                };
+                
+                // Assemble the alert
+                alertBox.appendChild(title);
+                alertBox.appendChild(message);
+                alertBox.appendChild(button);
+                overlay.appendChild(alertBox);
+                
+                // Add to the page
+                document.body.appendChild(overlay);
+                
+                return; // Stop execution if validation fails
+            }
+            
+            // If all fields are filled, proceed with submission
             const overlay = document.createElement('div');
             overlay.className = 'custom-alert-overlay';
             
