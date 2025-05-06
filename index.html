@@ -283,8 +283,37 @@
         }
         
         function submitReflection() {
-            alert('Your reflection has been submitted. The mirror remembers.');
-            showPage('disclaimer-page');
+            // Create custom alert elements
+            const overlay = document.createElement('div');
+            overlay.className = 'custom-alert-overlay';
+            
+            const alertBox = document.createElement('div');
+            alertBox.className = 'custom-alert';
+            
+            const title = document.createElement('h2');
+            title.textContent = 'A message from www.integritygatekeeper.com';
+            
+            const message = document.createElement('p');
+            message.textContent = 'Your reflection has been submitted. The mirror remembers.';
+            
+            const button = document.createElement('button');
+            button.className = 'custom-alert-button';
+            button.textContent = 'OK';
+            button.onclick = function() {
+                // Remove the custom alert
+                document.body.removeChild(overlay);
+                // Go back to disclaimer page
+                showPage('disclaimer-page');
+            };
+            
+            // Assemble the alert
+            alertBox.appendChild(title);
+            alertBox.appendChild(message);
+            alertBox.appendChild(button);
+            overlay.appendChild(alertBox);
+            
+            // Add to the page
+            document.body.appendChild(overlay);
         }
     </script>
 </body>
