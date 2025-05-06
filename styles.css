@@ -1,114 +1,127 @@
-/* Base Style */
-body {
-    background-color: #fdfaf5; /* parchment tone */
-    font-family: 'Georgia', serif;
+/* Reset and base layout */
+* {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
+}
+
+body {
+    font-family: 'Georgia', serif;
+    background-color: #FAF6EF; /* Warm parchment */
     color: #111;
-  }
-  
-  /* Layout */
-  .content {
-    max-width: 800px;
-    margin: 4em auto;
-    padding: 0 1.5em;
-  }
-  
-  /* Disclaimer Page */
-  #disclaimer-page {
-    display: flex;
+    line-height: 1.6;
+    padding: 2rem;
+}
+
+/* Page containers */
+#disclaimer-page,
+#gatekeeper-page,
+#phase1-page,
+#phase2-page,
+#phase3-page {
+    display: none;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    text-align: center;
+    min-height: 100vh;
     opacity: 0;
     transition: opacity 1.5s ease-in-out;
-    text-align: center;
-  }
-  
-  /* Logo */
-  .logo {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 1em;
-  }
-  
-  /* Titles */
-  h1 {
-    font-size: 3.2rem;
-    text-align: center;
-    margin: 0.2em 0;
+}
+
+.content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Logo spacing */
+.logo {
+    margin-bottom: 1.5rem;
+}
+
+/* Typography */
+h1 {
+    font-size: 2.75rem;
     font-weight: bold;
-    letter-spacing: 1px;
-  }
-  
-  h2 {
+    margin-bottom: 1rem;
+}
+
+h2 {
     font-size: 1.5rem;
-    text-align: center;
     font-weight: normal;
+    margin-bottom: 2rem;
+    font-style: italic;
     color: #444;
-    margin-bottom: 2em;
-  }
-  
-  /* Paragraphs */
-  p {
+}
+
+p {
     font-size: 1.1rem;
-    line-height: 1.6;
-    text-align: center;
-    margin: 1em 0;
-  }
-  
-  /* Questions */
-  .question {
-    margin-bottom: 2em;
-  }
-  
-  .question p {
-    text-align: left;
-    font-weight: bold;
-    margin-bottom: 0.5em;
-  }
-  
-  /* Textareas */
-  textarea {
-    width: 100%;
-    min-height: 100px;
-    padding: 0.75em;
-    font-size: 1rem;
-    font-family: 'Georgia', serif;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    resize: vertical;
-  }
-  
-  /* Buttons */
-  button {
+    margin-bottom: 1rem;
+}
+
+em {
+    font-style: italic;
+}
+
+.main-title {
+    font-size: 2.5rem;
+    margin-bottom: 0.25rem;
+}
+
+.phase-title {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+}
+
+/* Buttons */
+button {
     background-color: #111;
-    color: #fdfaf5;
-    padding: 0.75em 1.5em;
-    font-size: 1rem;
+    color: #fff;
+    padding: 0.75rem 1.5rem;
     border: none;
     border-radius: 5px;
+    font-size: 1rem;
     cursor: pointer;
-    margin-top: 2em;
+    margin-top: 1.5rem;
     transition: background-color 0.3s ease;
-  }
-  
-  button:hover {
+}
+
+button:hover {
     background-color: #333;
-  }
-  
-  /* Header Container (for Phase I, II, III) */
-  .header-container {
-    margin-bottom: 3em;
-  }
-  
-  /* Animation handling */
-  #disclaimer-page,
-  #gatekeeper-page,
-  #phase1-page,
-  #phase2-page,
-  #phase3-page {
-    transition: opacity 1.5s ease-in-out;
-  }
+}
+
+/* Questions layout */
+.question {
+    text-align: left;
+    margin-bottom: 1.75rem;
+}
+
+.question p {
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+textarea {
+    width: 100%;
+    height: 120px;
+    padding: 1rem;
+    font-family: 'Georgia', serif;
+    font-size: 1rem;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+    margin-top: 0.5rem;
+    background-color: #fffefc;
+}
+
+/* Disclaimer heading and paragraph centering */
+#disclaimer-page h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+#disclaimer-page p {
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+}
