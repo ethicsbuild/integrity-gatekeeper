@@ -99,10 +99,3 @@ textarea {
   justify-content: center;
   min-height: 100vh;
 }
-
-#gatekeeper-page .content,
-#phase1-page .content,
-#phase2-page .content,
-#phase3-page .content {
-  display: none;
-}
