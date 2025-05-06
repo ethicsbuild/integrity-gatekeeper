@@ -19,8 +19,8 @@ body {
   padding: 3rem 2rem;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  text-align: left;
+  align-items: center;
+  text-align: center;
 }
 
 /* Logo */
@@ -36,14 +36,20 @@ body {
 }
 
 /* Titles */
+h1 {
+  font-size: 2.75rem;
+  font-weight: bold;
+  text-align: center;
+  color: #2c3e50;
+  margin-bottom: 1rem;
+}
+
 .main-title {
   font-size: 2.75rem;
   font-weight: bold;
   text-align: center;
   color: #2c3e50;
-  margin: 0 auto 1rem auto;
-  display: block;
-  width: 100%;
+  margin-bottom: 0.5rem;
 }
 h1 {
   font-size: 2.75rem;
@@ -56,10 +62,9 @@ h1 {
 .phase-title {
   font-size: 1.5rem;
   font-style: italic;
-  margin-bottom: 2rem;
   color: #555;
   text-align: center;
-  display: block;
+  margin-bottom: 2rem;
 }
 
 /* Paragraphs */
@@ -96,15 +101,12 @@ button:hover {
 
 /* Questions */
 .question {
+  width: 100%;
   margin-bottom: 2rem;
   text-align: left;
   font-size: 1.1rem;
-}
-
-.question-page .question {
-  margin-bottom: 2.5rem;
-  padding-bottom: 1rem;
   border-bottom: 1px solid #e2e2e2;
+  padding-bottom: 1rem;
 }
 
 .question p {
@@ -144,8 +146,8 @@ textarea {
   opacity: 0;
   transition: opacity 1.5s ease-in-out;
 }
-# Fix question rendering bug and force question-page to show
 .question-page {
   display: block;
   opacity: 1 !important;
+  padding-top: 2rem;
 }
