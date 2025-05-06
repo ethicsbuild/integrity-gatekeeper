@@ -1,169 +1,108 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Integrity Gatekeeper</title>
-    <link rel="stylesheet" href="styles.css" />
-</head>
-<body>
-    <div id="disclaimer-page">
-        <div class="content">
-            <h1>Disclaimer</h1>
-            <p>Please read and accept the terms before proceeding.</p>
-            <button id="accept-disclaimer">Accept</button>
-        </div>
-    </div>
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Georgia', serif;
+  background-color: #fdf8f1;
+  color: #111;
+}
 
-    <div id="gatekeeper-page">
-        <div class="content">
-            <h1 class="main-title">Integrity Gatekeeper</h1>
-            <h2>Welcome! Let's begin your journey.</h2>
-            <button id="start-gatekeeper">Start</button>
-        </div>
-    </div>
+.content {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
 
-    <div id="phase1-page">
-        <div class="content">
-            <h1 class="phase-title">Phase I Questions</h1>
-            <div class="question">
-                <p>1. What does integrity mean to you?</p>
-                <textarea id="q1"></textarea>
-            </div>
-            <div class="question">
-                <p>2. Describe a time you faced an ethical dilemma.</p>
-                <textarea id="q2"></textarea>
-            </div>
-            <div class="question">
-                <p>3. How do you ensure honesty in your daily life?</p>
-                <textarea id="q3"></textarea>
-            </div>
-            <div class="question">
-                <p>4. What role does trust play in your relationships?</p>
-                <textarea id="q4"></textarea>
-            </div>
-            <div class="question">
-                <p>5. How do you handle situations where you must admit a mistake?</p>
-                <textarea id="q5"></textarea>
-            </div>
-            <div class="question">
-                <p>6. What personal values guide your decisions?</p>
-                <textarea id="q6"></textarea>
-            </div>
-            <div class="question">
-                <p>7. Describe how you react to peer pressure.</p>
-                <textarea id="q7"></textarea>
-            </div>
-            <div class="question">
-                <p>8. How do you balance personal gain with ethical behavior?</p>
-                <textarea id="q8"></textarea>
-            </div>
-            <div class="question">
-                <p>9. What does accountability mean to you?</p>
-                <textarea id="q9"></textarea>
-            </div>
-            <div class="question">
-                <p>10. How do you maintain integrity when no one is watching?</p>
-                <textarea id="q10"></textarea>
-            </div>
-            <button id="submit-phase1">Next</button>
-        </div>
-    </div>
+h1 {
+  font-size: 2.6em;
+  font-weight: 700;
+  margin-bottom: 0.5em;
+}
 
-    <div id="phase2-page">
-        <div class="content">
-            <h1 class="phase-title">Phase II Questions</h1>
-            <div class="question">
-                <p>11. How do you handle conflicts of interest?</p>
-                <textarea id="q11"></textarea>
-            </div>
-            <div class="question">
-                <p>12. Describe a situation where you stood up for what was right.</p>
-                <textarea id="q12"></textarea>
-            </div>
-            <div class="question">
-                <p>13. How do you respond to unethical behavior in others?</p>
-                <textarea id="q13"></textarea>
-            </div>
-            <div class="question">
-                <p>14. What is your approach to transparency?</p>
-                <textarea id="q14"></textarea>
-            </div>
-            <div class="question">
-                <p>15. How do you ensure fairness in your actions?</p>
-                <textarea id="q15"></textarea>
-            </div>
-            <div class="question">
-                <p>16. Describe a time you had to make a difficult ethical decision.</p>
-                <textarea id="q16"></textarea>
-            </div>
-            <div class="question">
-                <p>17. What role does empathy play in your integrity?</p>
-                <textarea id="q17"></textarea>
-            </div>
-            <div class="question">
-                <p>18. How do you cultivate trustworthiness?</p>
-                <textarea id="q18"></textarea>
-            </div>
-            <div class="question">
-                <p>19. What are the consequences of lacking integrity?</p>
-                <textarea id="q19"></textarea>
-            </div>
-            <div class="question">
-                <p>20. How do you recover from a lapse in integrity?</p>
-                <textarea id="q20"></textarea>
-            </div>
-            <button id="submit-phase2">Next</button>
-        </div>
-    </div>
+h2 {
+  font-size: 1.5em;
+  font-style: italic;
+  margin-top: -10px;
+  margin-bottom: 1.5em;
+}
 
-    <div id="phase3-page">
-        <div class="content">
-            <h1 class="phase-title">Phase III Questions</h1>
-            <div class="question">
-                <p>21. How do you inspire integrity in others?</p>
-                <textarea id="q21"></textarea>
-            </div>
-            <div class="question">
-                <p>22. What systems help maintain integrity in organizations?</p>
-                <textarea id="q22"></textarea>
-            </div>
-            <div class="question">
-                <p>23. How do you handle confidential information?</p>
-                <textarea id="q23"></textarea>
-            </div>
-            <div class="question">
-                <p>24. Describe your commitment to ethical leadership.</p>
-                <textarea id="q24"></textarea>
-            </div>
-            <div class="question">
-                <p>25. How do you evaluate your own integrity?</p>
-                <textarea id="q25"></textarea>
-            </div>
-            <div class="question">
-                <p>26. What challenges do you face in maintaining integrity?</p>
-                <textarea id="q26"></textarea>
-            </div>
-            <div class="question">
-                <p>27. How do you integrate integrity into your personal goals?</p>
-                <textarea id="q27"></textarea>
-            </div>
-            <div class="question">
-                <p>28. What role does accountability play in your community?</p>
-                <textarea id="q28"></textarea>
-            </div>
-            <div class="question">
-                <p>29. How do you promote ethical practices in your environment?</p>
-                <textarea id="q29"></textarea>
-            </div>
-            <div class="question">
-                <p>30. What is your vision for a world with greater integrity?</p>
-                <textarea id="q30"></textarea>
-            </div>
-            <button id="submit-phase3">Finish</button>
-        </div>
-    </div>
+p {
+  font-size: 1.1em;
+  line-height: 1.6;
+  margin: 0.8em 0;
+}
 
-    <script src="script.js"></script>
-</body>
-</html>
+em {
+  font-style: italic;
+}
+
+button {
+  background-color: #111;
+  color: #fff;
+  border: none;
+  padding: 12px 24px;
+  font-size: 1em;
+  margin-top: 2em;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #333;
+}
+
+textarea {
+  width: 100%;
+  min-height: 120px;
+  margin-top: 0.5em;
+  margin-bottom: 2em;
+  padding: 12px;
+  font-size: 1em;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-family: 'Georgia', serif;
+  background-color: #fffefb;
+  color: #111;
+}
+
+.logo {
+  margin-bottom: 30px;
+}
+
+.main-title {
+  font-size: 3em;
+  letter-spacing: 1px;
+}
+
+.phase-title {
+  font-size: 1.4em;
+  font-style: italic;
+  margin-bottom: 2em;
+}
+
+.question {
+  text-align: left;
+  margin-bottom: 1.5em;
+}
+
+.question p {
+  font-weight: 600;
+  font-size: 1.1em;
+  margin-bottom: 0.5em;
+}
+
+#disclaimer-page .content {
+  justify-content: center;
+  min-height: 100vh;
+}
+
+#gatekeeper-page .content,
+#phase1-page .content,
+#phase2-page .content,
+#phase3-page .content {
+  display: none;
+}
