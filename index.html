@@ -243,59 +243,49 @@
     </div>
     
     <script>
-        // Show the disclaimer page by default
+        // Wait for the DOM to be fully loaded before initializing
         document.addEventListener('DOMContentLoaded', function() {
-            showPage('disclaimer-page');
+            // Hide all pages initially
+            document.getElementById('disclaimer-page').style.display = 'none';
+            document.getElementById('gatekeeper-page').style.display = 'none';
+            document.getElementById('phase1-page').style.display = 'none';
+            document.getElementById('phase2-page').style.display = 'none';
+            document.getElementById('phase3-page').style.display = 'none';
+            
+            // Set a small timeout to ensure clean initial rendering
+            setTimeout(function() {
+                // Show disclaimer page
+                document.getElementById('disclaimer-page').style.display = 'flex';
+                document.getElementById('disclaimer-page').style.opacity = '1';
+            }, 100);
         });
         
         function showPage(pageId) {
             // Get current visible page
             const currentPage = document.querySelector('div[id$="-page"]:not([style*="display: none"])');
             
+            // Only proceed if we have a current page
             if (currentPage) {
                 // Fade out current page
                 currentPage.style.opacity = '0';
                 
                 setTimeout(function() {
-                    // Hide all pages
-                    document.getElementById('disclaimer-page').style.display = 'none';
-                    document.getElementById('gatekeeper-page').style.display = 'none';
-                    document.getElementById('phase1-page').style.display = 'none';
-                    document.getElementById('phase2-page').style.display = 'none';
-                    document.getElementById('phase3-page').style.display = 'none';
+                    // Hide current page first
+                    currentPage.style.display = 'none';
                     
-                    // Show new page but still invisible
-                    document.getElementById(pageId).style.display = 'block';
+                    // Show new page with appropriate display style
+                    if (pageId === 'disclaimer-page') {
+                        document.getElementById(pageId).style.display = 'flex';
+                    } else {
+                        document.getElementById(pageId).style.display = 'block';
+                    }
                     
-                    // Force reflow
+                    // Force reflow to ensure transition works
                     void document.getElementById(pageId).offsetWidth;
                     
                     // Fade in new page
-                    setTimeout(function() {
-                        document.getElementById(pageId).style.opacity = '1';
-                    }, 50);
-                    
-                    // If it's the disclaimer page, center it vertically
-                    if (pageId === 'disclaimer-page') {
-                        document.getElementById(pageId).style.display = 'flex';
-                    }
+                    document.getElementById(pageId).style.opacity = '1';
                 }, 1500); // Match transition duration
-            } else {
-                // First page load, no fade needed
-                document.getElementById('disclaimer-page').style.display = 'none';
-                document.getElementById('gatekeeper-page').style.display = 'none';
-                document.getElementById('phase1-page').style.display = 'none';
-                document.getElementById('phase2-page').style.display = 'none';
-                document.getElementById('phase3-page').style.display = 'none';
-                
-                // Handle disclaimer page differently for initial load
-                if (pageId === 'disclaimer-page') {
-                    document.getElementById(pageId).style.display = 'flex';
-                } else {
-                    document.getElementById(pageId).style.display = 'block';
-                }
-                
-                document.getElementById(pageId).style.opacity = '1';
             }
         }
         
