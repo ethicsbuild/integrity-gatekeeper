@@ -1,157 +1,120 @@
-/* Global Styles */
+/* Reset and Base Layout */
 body {
-    font-family: 'Georgia', serif;
     margin: 0;
     padding: 0;
-    background-color: #f9f5e7; /* Parchment paper color */
-    color: #333;
-    overflow-x: hidden;
-}
-
-/* Page layout - critical fix */
-#disclaimer-page, #gatekeeper-page, #phase1-page, #phase2-page, #phase3-page {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    overflow-y: auto;
-    display: none;
-    opacity: 0;
-    transition: opacity 1.5s ease;
-}
-
-/* Content containers */
-.content {
-    max-width: 700px;
-    margin: 2rem auto;
-    padding: 2rem;
-    text-align: center;
-    background-color: rgba(255, 255, 255, 0.85);
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    box-sizing: border-box;
-}
-
-/* Disclaimer page specific */
-#disclaimer-page {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-#disclaimer-page .content {
-    width: 90%;
-    max-width: 600px;
-}
-
-/* Header container for phase pages */
-.header-container {
-    margin-bottom: 2rem;
-    border-bottom: 1px solid #ddd;
-    padding-bottom: 1rem;
-}
-
-.main-title {
-    margin-bottom: 0.5rem;
-}
-
-.phase-title {
-    font-size: 1.5rem;
-    margin-top: 0;
-    font-weight: normal;
-}
-
-/* Buttons */
-button {
-    background-color: #333;
-    color: white;
-    padding: 0.75rem 1.5rem;
-    margin: 1.5rem 0;
-    border: none;
-    border-radius: 0;
-    font-family: inherit;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    display: inline-block;
-}
-
-button:hover {
-    background-color: #555;
-}
-
-/* Questions styling */
-.question {
-    margin-bottom: 2rem;
-    text-align: left;
-}
-
-textarea {
-    width: 100%;
-    min-height: 100px;
-    background-color: white;
-    color: #333;
-    border: 1px solid #ccc;
-    padding: 0.75rem;
-    resize: vertical;
-    font-family: inherit;
-    box-sizing: border-box;
-}
-
-/* Typography */
-h1 {
-    font-size: 2rem;
-    margin-bottom: 1.5rem;
-    text-transform: uppercase;
-}
-
-p {
-    font-size: 1rem;
+    font-family: 'Georgia', serif;
+    background-color: #f5f5f5;
+    color: #111;
     line-height: 1.6;
-    margin-bottom: 1rem;
-}
-
-/* Logo styling */
-.logo {
-    margin: 0 auto 2rem auto;
-    width: 120px;
+  }
+  
+  .content {
+    max-width: 800px;
+    margin: 60px auto;
+    padding: 0 20px;
+    text-align: center;
+  }
+  
+  /* Logo Styling */
+  .logo img {
+    display: block;
+    margin: 0 auto 20px;
+    max-width: 120px;
+    height: auto;
+  }
+  
+  /* Headings */
+  h1 {
+    font-size: 2.2em;
+    margin-bottom: 0.2em;
+    font-weight: 600;
+  }
+  
+  h2 {
+    font-size: 1.4em;
+    font-weight: 400;
+    margin-top: 0;
+    margin-bottom: 1.5em;
+    color: #444;
+  }
+  
+  /* Paragraphs */
+  p {
+    font-size: 1.1em;
+    margin: 1em 0;
+    color: #222;
+  }
+  
+  /* Question Blocks */
+  .question {
+    margin-bottom: 2em;
+    text-align: left;
+  }
+  
+  .question p {
+    font-weight: bold;
+    margin-bottom: 0.5em;
+  }
+  
+  textarea {
+    width: 100%;
     height: 120px;
-}
-
-/* Responsive design */
-@media (max-width: 768px) {
+    padding: 10px;
+    font-family: 'Georgia', serif;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+  }
+  
+  /* Buttons */
+  button {
+    background-color: #000;
+    color: #fff;
+    border: none;
+    padding: 14px 26px;
+    font-size: 1em;
+    margin-top: 20px;
+    cursor: pointer;
+    border-radius: 4px;
+    letter-spacing: 0.5px;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #333;
+  }
+  
+  /* Page Transition Effects */
+  #disclaimer-page,
+  #gatekeeper-page,
+  #phase1-page,
+  #phase2-page,
+  #phase3-page {
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+  }
+  
+  /* Show active pages */
+  #disclaimer-page[style*="display: flex"],
+  #gatekeeper-page[style*="display: block"],
+  #phase1-page[style*="display: block"],
+  #phase2-page[style*="display: block"],
+  #phase3-page[style*="display: block"] {
+    opacity: 1;
+  }
+  
+  /* Responsive Tweaks */
+  @media (max-width: 600px) {
     .content {
-        width: 90%;
-        padding: 1.5rem;
-        margin: 1rem auto;
+      padding: 0 15px;
     }
-    
+  
     h1 {
-        font-size: 1.8rem;
+      font-size: 1.8em;
     }
-    
-    .phase-title {
-        font-size: 1.3rem;
+  
+    textarea {
+      height: 100px;
     }
-}
-
-@media (max-width: 480px) {
-    .content {
-        width: 95%;
-        padding: 1rem;
-        margin: 0.5rem auto;
-    }
-    
-    h1 {
-        font-size: 1.6rem;
-    }
-    
-    .phase-title {
-        font-size: 1.2rem;
-    }
-    
-    button {
-        width: 100%;
-    }
-}
+  }
