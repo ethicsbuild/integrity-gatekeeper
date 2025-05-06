@@ -20,12 +20,15 @@
     <div id="gatekeeper-page">
         <div class="content">
             <div class="logo">
-                <!-- Placeholder logo design -->
+                <!-- Your custom logo design -->
                 <svg width="120" height="120" viewBox="0 0 120 120">
-                    <circle cx="60" cy="60" r="55" fill="none" stroke="#333" stroke-width="1.5"/>
-                    <path d="M60 5 L60 115" stroke="#333" stroke-width="1.5"/>
-                    <path d="M5 60 L115 60" stroke="#333" stroke-width="1.5"/>
-                    <circle cx="60" cy="60" r="25" fill="none" stroke="#333" stroke-width="1.5"/>
+                    <!-- Two overlapping circles symbolizing integrity -->
+                    <circle cx="45" cy="60" r="35" fill="none" stroke="#333" stroke-width="1.5"/>
+                    <circle cx="75" cy="60" r="35" fill="none" stroke="#333" stroke-width="1.5"/>
+                    <!-- Vertical line through center -->
+                    <line x1="60" y1="20" x2="60" y2="100" stroke="#333" stroke-width="1.5"/>
+                    <!-- Small central circle -->
+                    <circle cx="60" cy="60" r="10" fill="none" stroke="#333" stroke-width="1.5"/>
                 </svg>
             </div>
             <h1>Integrity Gatekeeper</h1>
@@ -57,7 +60,10 @@
     <!-- Phase I Page -->
     <div id="phase1-page">
         <div class="content">
-            <h1>Phase I: First Reflection</h1>
+            <div class="header-container">
+                <h1 class="main-title">Integrity Gatekeeper</h1>
+                <h2 class="phase-title">Phase I: First Reflection</h2>
+            </div>
             
             <div class="question">
                 <p>1. What does integrity mean to you?</p>
@@ -116,7 +122,10 @@
     <!-- Phase II Page -->
     <div id="phase2-page">
         <div class="content">
-            <h1>Phase II: Ethical Disruption</h1>
+            <div class="header-container">
+                <h1 class="main-title">Integrity Gatekeeper</h1>
+                <h2 class="phase-title">Phase II: Ethical Disruption</h2>
+            </div>
             
             <div class="question">
                 <p>11. What do you stand for that you would defend no matter the cost?</p>
@@ -175,7 +184,10 @@
     <!-- Phase III Page -->
     <div id="phase3-page">
         <div class="content">
-            <h1>Phase III: Final Reckoning</h1>
+            <div class="header-container">
+                <h1 class="main-title">Integrity Gatekeeper</h1>
+                <h2 class="phase-title">Phase III: Final Reckoning</h2>
+            </div>
             
             <div class="question">
                 <p>21. What uncomfortable truth would change you if you accepted it?</p>
@@ -264,8 +276,10 @@
                         document.getElementById(pageId).style.opacity = '1';
                     }, 50);
                     
-                    // Scroll to top
-                    window.scrollTo(0, 0);
+                    // If it's the disclaimer page, center it vertically
+                    if (pageId === 'disclaimer-page') {
+                        document.getElementById(pageId).style.display = 'flex';
+                    }
                 }, 1500); // Match transition duration
             } else {
                 // First page load, no fade needed
@@ -275,7 +289,13 @@
                 document.getElementById('phase2-page').style.display = 'none';
                 document.getElementById('phase3-page').style.display = 'none';
                 
-                document.getElementById(pageId).style.display = 'block';
+                // Handle disclaimer page differently for initial load
+                if (pageId === 'disclaimer-page') {
+                    document.getElementById(pageId).style.display = 'flex';
+                } else {
+                    document.getElementById(pageId).style.display = 'block';
+                }
+                
                 document.getElementById(pageId).style.opacity = '1';
             }
         }
@@ -285,5 +305,5 @@
             showPage('disclaimer-page');
         }
     </script>
-</body><!-- Triggering new Vercel deployment -->
+</body>
 </html>

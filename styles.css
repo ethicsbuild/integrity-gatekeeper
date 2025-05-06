@@ -45,6 +45,23 @@ body {
     max-width: 600px;
 }
 
+/* Header container for phase pages */
+.header-container {
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 1rem;
+}
+
+.main-title {
+    margin-bottom: 0.5rem;
+}
+
+.phase-title {
+    font-size: 1.5rem;
+    margin-top: 0;
+    font-weight: normal;
+}
+
 /* Buttons */
 button {
     background-color: #333;
@@ -113,6 +130,10 @@ p {
     h1 {
         font-size: 1.8rem;
     }
+    
+    .phase-title {
+        font-size: 1.3rem;
+    }
 }
 
 @media (max-width: 480px) {
@@ -124,6 +145,10 @@ p {
     
     h1 {
         font-size: 1.6rem;
+    }
+    
+    .phase-title {
+        font-size: 1.2rem;
     }
     
     button {
