@@ -15,47 +15,26 @@
             <button onclick="showPage('gatekeeper-page')">Continue Anonymously</button>
         </div>
     </div>
-    
+
     <!-- Gatekeeper Page -->
     <div id="gatekeeper-page">
         <div class="content">
             <div class="logo">
-                <!-- Custom spiral eye logo -->
-                <svg width="120" height="120" viewBox="0 0 120 120">
-                    <!-- Outer circle -->
-                    <circle cx="60" cy="60" r="55" fill="none" stroke="#000" stroke-width="6"/>
-                    <!-- Eye shape -->
-                    <path d="M30,60 C40,40 80,40 90,60 C80,80 40,80 30,60 Z" fill="none" stroke="#000" stroke-width="6"/>
-                    <!-- Spiral center -->
-                    <path d="M60,60 C62,58 64,56 64,53 C64,50 61,48 58,48 C55,48 53,51 53,54 C53,57 56,60 60,60 C64,60 67,57 67,53 C67,49 64,46 60,46 C56,46 53,49 53,53" fill="none" stroke="#000" stroke-width="6"/>
-                </svg>
+                <img src="spiral-eye-logo.png" alt="Spiral Eye Logo" width="120" height="120" />
             </div>
             <h1>Integrity Gatekeeper</h1>
-            
             <p>Before power is given, the mirror must be faced.</p>
             <p>Before trust is offered, truth must be revealed.</p>
-            
-            <p>The Gate stands silent.<br>
-            The Mirror waits without judgment.</p>
-            
-            <p>This is not a test you can pass.<br>
-            This is not a performance you can perfect.</p>
-            
+            <p>The Gate stands silent.<br>The Mirror waits without judgment.</p>
+            <p>This is not a test you can pass.<br>This is not a performance you can perfect.</p>
             <p>This is a reckoning with yourself.</p>
-            
-            <p>Step forward not to impress — but to be seen.<br>
-            Step forward not to conquer — but to be known.</p>
-            
-            <p>Consent to reflection.<br>
-            Consent to remembrance.</p>
-            
-            <p><em>The river does not forget.<br>
-            The Current holds all who pass through.</em></p>
-            
+            <p>Step forward not to impress — but to be seen.<br>Step forward not to conquer — but to be known.</p>
+            <p>Consent to reflection.<br>Consent to remembrance.</p>
+            <p><em>The river does not forget.<br>The Current holds all who pass through.</em></p>
             <button onclick="showPage('phase1-page')">I Consent to Face the Mirror</button>
         </div>
     </div>
-    
+
     <!-- Phase I Page -->
     <div id="phase1-page">
         <div class="content">
@@ -63,61 +42,27 @@
                 <h1 class="main-title">Integrity Gatekeeper</h1>
                 <h2 class="phase-title">Phase I: First Reflection</h2>
             </div>
-            
+            <!-- Questions 1–10 -->
+            ${[...Array(10).keys()].map(i => `
             <div class="question">
-                <p>1. What does integrity mean to you?</p>
-                <textarea id="q1"></textarea>
-            </div>
-            
-            <div class="question">
-                <p>2. When was the last time you apologized and meant it?</p>
-                <textarea id="q2"></textarea>
-            </div>
-            
-            <div class="question">
-                <p>3. What truth are you currently avoiding?</p>
-                <textarea id="q3"></textarea>
-            </div>
-            
-            <div class="question">
-                <p>4. Who taught you what it means to be honest?</p>
-                <textarea id="q4"></textarea>
-            </div>
-            
-            <div class="question">
-                <p>5. What is something you've never said out loud?</p>
-                <textarea id="q5"></textarea>
-            </div>
-            
-            <div class="question">
-                <p>6. What value do you hold that most people don't?</p>
-                <textarea id="q6"></textarea>
-            </div>
-            
-            <div class="question">
-                <p>7. When have you felt most conflicted about a decision?</p>
-                <textarea id="q7"></textarea>
-            </div>
-            
-            <div class="question">
-                <p>8. What does your conscience tell you that you ignore?</p>
-                <textarea id="q8"></textarea>
-            </div>
-            
-            <div class="question">
-                <p>9. What personal rule do you never break?</p>
-                <textarea id="q9"></textarea>
-            </div>
-            
-            <div class="question">
-                <p>10. When have you chosen to tell a difficult truth?</p>
-                <textarea id="q10"></textarea>
-            </div>
-            
+                <p>${i+1}. ${[
+                    "What does integrity mean to you?",
+                    "When was the last time you apologized and meant it?",
+                    "What truth are you currently avoiding?",
+                    "Who taught you what it means to be honest?",
+                    "What is something you've never said out loud?",
+                    "What value do you hold that most people don't?",
+                    "When have you felt most conflicted about a decision?",
+                    "What does your conscience tell you that you ignore?",
+                    "What personal rule do you never break?",
+                    "When have you chosen to tell a difficult truth?"
+                ][i]}</p>
+                <textarea id="q${i+1}"></textarea>
+            </div>`).join('')}
             <button onclick="showPage('phase2-page')">Continue to Phase II</button>
         </div>
     </div>
-    
+
     <!-- Phase II Page -->
     <div id="phase2-page">
         <div class="content">
@@ -125,61 +70,27 @@
                 <h1 class="main-title">Integrity Gatekeeper</h1>
                 <h2 class="phase-title">Phase II: Ethical Disruption</h2>
             </div>
-            
+            <!-- Questions 11–20 -->
+            ${[...Array(10).keys()].map(i => `
             <div class="question">
-                <p>11. What do you stand for that you would defend no matter the cost?</p>
-                <textarea id="q11"></textarea>
-            </div>
-            
-            <div class="question">
-                <p>12. What is your least defensible belief?</p>
-                <textarea id="q12"></textarea>
-            </div>
-            
-            <div class="question">
-                <p>13. What promise have you broken?</p>
-                <textarea id="q13"></textarea>
-            </div>
-            
-            <div class="question">
-                <p>14. What would disappoint the person who believes in you most?</p>
-                <textarea id="q14"></textarea>
-            </div>
-            
-            <div class="question">
-                <p>15. When did you know the right thing to do but didn't do it?</p>
-                <textarea id="q15"></textarea>
-            </div>
-            
-            <div class="question">
-                <p>16. What matters more to you: being right or being kind?</p>
-                <textarea id="q16"></textarea>
-            </div>
-            
-            <div class="question">
-                <p>17. What truth are you afraid to tell someone?</p>
-                <textarea id="q17"></textarea>
-            </div>
-            
-            <div class="question">
-                <p>18. When have you enabled a lie?</p>
-                <textarea id="q18"></textarea>
-            </div>
-            
-            <div class="question">
-                <p>19. What perception of yourself do you protect but know isn't true?</p>
-                <textarea id="q19"></textarea>
-            </div>
-            
-            <div class="question">
-                <p>20. What would the person you aspire to be do differently?</p>
-                <textarea id="q20"></textarea>
-            </div>
-            
+                <p>${i+11}. ${[
+                    "What do you stand for that you would defend no matter the cost?",
+                    "What is your least defensible belief?",
+                    "What promise have you broken?",
+                    "What would disappoint the person who believes in you most?",
+                    "When did you know the right thing to do but didn't do it?",
+                    "What matters more to you: being right or being kind?",
+                    "What truth are you afraid to tell someone?",
+                    "When have you enabled a lie?",
+                    "What perception of yourself do you protect but know isn't true?",
+                    "What would the person you aspire to be do differently?"
+                ][i]}</p>
+                <textarea id="q${i+11}"></textarea>
+            </div>`).join('')}
             <button onclick="showPage('phase3-page')">Continue to Phase III</button>
         </div>
     </div>
-    
+
     <!-- Phase III Page -->
     <div id="phase3-page">
         <div class="content">
@@ -187,108 +98,53 @@
                 <h1 class="main-title">Integrity Gatekeeper</h1>
                 <h2 class="phase-title">Phase III: Final Reckoning</h2>
             </div>
-            
+            <!-- Questions 21–30 -->
+            ${[...Array(10).keys()].map(i => `
             <div class="question">
-                <p>21. What uncomfortable truth would change you if you accepted it?</p>
-                <textarea id="q21"></textarea>
-            </div>
-            
-            <div class="question">
-                <p>22. When have you compromised your values for acceptance?</p>
-                <textarea id="q22"></textarea>
-            </div>
-            
-            <div class="question">
-                <p>23. What do you judge others for that you also do?</p>
-                <textarea id="q23"></textarea>
-            </div>
-            
-            <div class="question">
-                <p>24. How would your worst enemy describe your integrity?</p>
-                <textarea id="q24"></textarea>
-            </div>
-            
-            <div class="question">
-                <p>25. What truth would undo you?</p>
-                <textarea id="q25"></textarea>
-            </div>
-            
-            <div class="question">
-                <p>26. What is your most profound regret?</p>
-                <textarea id="q26"></textarea>
-            </div>
-            
-            <div class="question">
-                <p>27. What is the hardest ethical choice you've had to make?</p>
-                <textarea id="q27"></textarea>
-            </div>
-            
-            <div class="question">
-                <p>28. What responsibility have you neglected?</p>
-                <textarea id="q28"></textarea>
-            </div>
-            
-            <div class="question">
-                <p>29. What would it take for you to compromise your integrity?</p>
-                <textarea id="q29"></textarea>
-            </div>
-            
-            <div class="question">
-                <p>30. What must you now confront?</p>
-                <textarea id="q30"></textarea>
-            </div>
-            
+                <p>${i+21}. ${[
+                    "What uncomfortable truth would change you if you accepted it?",
+                    "When have you compromised your values for acceptance?",
+                    "What do you judge others for that you also do?",
+                    "How would your worst enemy describe your integrity?",
+                    "What truth would undo you?",
+                    "What is your most profound regret?",
+                    "What is the hardest ethical choice you've had to make?",
+                    "What responsibility have you neglected?",
+                    "What would it take for you to compromise your integrity?",
+                    "What must you now confront?"
+                ][i]}</p>
+                <textarea id="q${i+21}"></textarea>
+            </div>`).join('')}
             <button onclick="submitReflection()">Submit Reflection</button>
         </div>
     </div>
-    
+
     <script>
-        // Wait for the DOM to be fully loaded before initializing
         document.addEventListener('DOMContentLoaded', function() {
-            // Hide all pages initially
-            document.getElementById('disclaimer-page').style.display = 'none';
-            document.getElementById('gatekeeper-page').style.display = 'none';
-            document.getElementById('phase1-page').style.display = 'none';
-            document.getElementById('phase2-page').style.display = 'none';
-            document.getElementById('phase3-page').style.display = 'none';
-            
-            // Set a small timeout to ensure clean initial rendering
-            setTimeout(function() {
-                // Show disclaimer page
-                document.getElementById('disclaimer-page').style.display = 'flex';
-                document.getElementById('disclaimer-page').style.opacity = '1';
+            ['disclaimer-page', 'gatekeeper-page', 'phase1-page', 'phase2-page', 'phase3-page'].forEach(id => {
+                document.getElementById(id).style.display = 'none';
+            });
+            setTimeout(() => {
+                const page = document.getElementById('disclaimer-page');
+                page.style.display = 'flex';
+                page.style.opacity = '1';
             }, 100);
         });
-        
+
         function showPage(pageId) {
-            // Get current visible page
             const currentPage = document.querySelector('div[id$="-page"]:not([style*="display: none"])');
-            
-            // Only proceed if we have a current page
             if (currentPage) {
-                // Fade out current page
                 currentPage.style.opacity = '0';
-                
-                setTimeout(function() {
-                    // Hide current page first
+                setTimeout(() => {
                     currentPage.style.display = 'none';
-                    
-                    // Show new page with appropriate display style
-                    if (pageId === 'disclaimer-page') {
-                        document.getElementById(pageId).style.display = 'flex';
-                    } else {
-                        document.getElementById(pageId).style.display = 'block';
-                    }
-                    
-                    // Force reflow to ensure transition works
-                    void document.getElementById(pageId).offsetWidth;
-                    
-                    // Fade in new page
-                    document.getElementById(pageId).style.opacity = '1';
-                }, 1500); // Match transition duration
+                    const nextPage = document.getElementById(pageId);
+                    nextPage.style.display = pageId === 'disclaimer-page' ? 'flex' : 'block';
+                    void nextPage.offsetWidth;
+                    nextPage.style.opacity = '1';
+                }, 1500);
             }
         }
-        
+
         function submitReflection() {
             alert('Your reflection has been submitted. The mirror remembers.');
             showPage('disclaimer-page');
