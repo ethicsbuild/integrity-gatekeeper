@@ -374,8 +374,16 @@
         }
         
         function generateDownloadableReflection() {
-            // Create an embedded SVG logo with the spiral eye
-            const svgLogo = '<svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg"><circle cx="60" cy="60" r="55" fill="none" stroke="#000" stroke-width="6"/><path d="M30,60 C40,40 80,40 90,60 C80,80 40,80 30,60 Z" fill="none" stroke="#000" stroke-width="6"/><path d="M60,60 C62,58 64,56 64,53 C64,50 61,48 58,48 C55,48 53,51 53,54 C53,57 56,60 60,60 C64,60 67,57 67,53 C67,49 64,46 60,46 C56,46 53,49 53,53 C53,57 56,61 60,61 C65,61 70,58 70,52 C70,46 64,42 58,42 C52,42 48,47 48,53 C48,59 53,65 61,65 C69,65 75,59 75,51 C75,43 69,37 59,37 C49,37 43,44 43,52 C43,60 49,70 62,70 C75,70 82,62 82,50 C82,38 73,31 60,31" fill="none" stroke="#000" stroke-width="6"/></svg>';
+            // Create an embedded SVG for the spiral eye logo that matches your actual logo
+            const svgLogo = `<svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+                <!-- Outer circle -->
+                <circle cx="60" cy="60" r="55" fill="none" stroke="#000" stroke-width="6"/>
+                <!-- Eye outline -->
+                <path d="M30,60 C40,40 80,40 90,60 C80,80 40,80 30,60 Z" fill="none" stroke="#000" stroke-width="6"/>
+                <!-- Spiral inside eye -->
+                <path d="M60,60 C65,60 70,55 70,50 C70,45 65,40 60,40 C55,40 50,45 50,50 C50,55 55,60 60,60 C70,60 75,50 75,45 C75,35 65,30 60,30 C50,30 45,40 45,50 C45,60 50,70 60,70 C75,70 85,55 85,45 C85,30 70,25 60,25 C45,25 35,40 35,50 C35,65 50,75 60,75" fill="none" stroke="#000" stroke-width="6"/>
+            </svg>`;
+            
             const encodedLogo = btoa(svgLogo);
             
             // Collect all answers
