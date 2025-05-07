@@ -1,0 +1,50 @@
+{
+    "phases": [
+        {
+            "title": "Phase I: First Reflection",
+            "questions": [
+                "What does integrity mean to you?",
+                "When was the last time you apologized and meant it?",
+                "What truth are you currently avoiding?",
+                "Who taught you what it means to be honest?",
+                "What truth about yourself feels too dangerous to say out loud?",
+                "What value do you hold that most people don\u2019t?"
+            ]
+        },
+        {
+            "title": "Phase II: Ethical Disruption",
+            "questions": [
+                "What do you stand for that you would defend no matter the cost?",
+                "What promise have you broken?",
+                "When did you know the right thing to do but didn\u2019t do it?",
+                "What truth are you afraid to tell someone?",
+                "When have you enabled a lie?",
+                "When have you used \u201cbeing right\u201d as a reason not to be kind?",
+                "Who do you pretend to be when others are watching?",
+                "What would the person you aspire to be do differently?"
+            ]
+        },
+        {
+            "title": "Phase III: Final Reckoning",
+            "questions": [
+                "What uncomfortable truth would change you if you accepted it?",
+                "When have you compromised your values for acceptance?",
+                "What do you judge others for that you also do?",
+                "What is your most profound regret?",
+                "What is the hardest ethical choice you\u2019ve had to make?",
+                "What responsibility have you neglected?",
+                "What would it take for you to compromise your integrity?"
+            ]
+        },
+        {
+            "title": "Phase IV: The Hidden Current",
+            "questions": [
+                "What secret craving do you carry that you\u2019ve never explored?",
+                "When have you taken pleasure in having power over someone else?",
+                "What do you believe others secretly deserve, but won\u2019t admit?",
+                "When have you confused control with protection?",
+                "What temptation would be hardest to resist in a position of trust?"
+            ]
+        }
+    ]
+}
