@@ -1,4 +1,12 @@
-/* Custom alert styling */
+/* Validation styling */
+.validation-error {
+    border: 2px solid #ff3333;
+    background-color: rgba(255, 0, 0, 0.05);
+}
+
+.validation-alert h2 {
+    color: #ff3333;
+}/* Custom alert styling */
 .custom-alert-overlay {
     position: fixed;
     top: 0;
@@ -47,19 +55,7 @@
 
 .custom-alert-button:hover {
     background-color: #2952CC;
-}
-
-/* Validation styling */
-.validation-error {
-    border: 2px solid #ff3333;
-    background-color: rgba(255, 0, 0, 0.05);
-}
-
-.validation-alert h2 {
-    color: #ff3333;
-}
-
-/* Global Styles */
+}/* Global Styles */
 body {
     font-family: 'Georgia', serif;
     margin: 0;
@@ -187,34 +183,12 @@ p {
     height: auto;
 }
 
-/* Mobile readability improvements */
+/* Responsive design */
 @media (max-width: 768px) {
-    textarea {
-        font-size: 16px; /* Prevents iOS zoom on focus */
-    }
-    
-    .question p {
-        font-size: 1.1rem;
-        line-height: 1.4;
-    }
-    
-    /* Increase spacing between questions for easier reading */
-    .question {
-        margin-bottom: 2.5rem;
-        padding-bottom: 1rem;
-        border-bottom: 1px solid #eee;
-    }
-    
-    /* Make content wider on mobile for better readability */
     .content {
-        width: 95%;
-        max-width: none;
+        width: 90%;
         padding: 1.5rem;
-    }
-    
-    /* Adjust header for mobile */
-    .header-container {
-        margin-bottom: 1.5rem;
+        margin: 1rem auto;
     }
     
     h1, .main-title {
@@ -226,19 +200,11 @@ p {
     }
 }
 
-/* Extra small devices */
 @media (max-width: 480px) {
-    html {
-        font-size: 15px; /* Slightly smaller base font size */
-    }
-    
-    textarea {
-        min-height: 80px; /* Shorter textareas on very small screens */
-    }
-    
     .content {
+        width: 95%;
         padding: 1rem;
-        margin: 1rem auto;
+        margin: 0.5rem auto;
     }
     
     h1, .main-title {
