@@ -1,325 +1,474 @@
-// Add this function to generate a downloadable PDF of the user's answers
-function generateDownloadableReflection() {
-    // Collect all the answers
-    const answers = [];
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Integrity Gatekeeper</title>
     
-    // Phase 1 questions (1-10)
-    for (let i = 1; i <= 10; i++) {
-        const question = document.querySelector(`#phase1-page .question:nth-child(${i + 1}) p`).textContent;
-        const answer = document.getElementById(`q${i}`).value;
-        answers.push({ question, answer });
-    }
+    <!-- Open Graph Meta Tags for link sharing -->
+    <meta property="og:title" content=" " />
+    <meta property="og:description" content=" " />
+    <meta property="og:image" content="spiral-eye-logo.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="1200" />
+    <meta property="og:type" content="website" />
     
-    // Phase 2 questions (11-20)
-    for (let i = 11; i <= 20; i++) {
-        const question = document.querySelector(`#phase2-page .question:nth-child(${i - 10 + 1}) p`).textContent;
-        const answer = document.getElementById(`q${i}`).value;
-        answers.push({ question, answer });
-    }
+    <!-- Apple-specific link preview -->
+    <meta name="apple-mobile-web-app-title" content=" " />
+    <link rel="apple-touch-icon" href="spiral-eye-logo.png" />
     
-    // Phase 3 questions (21-30)
-    for (let i = 21; i <= 30; i++) {
-        const question = document.querySelector(`#phase3-page .question:nth-child(${i - 20 + 1}) p`).textContent;
-        const answer = document.getElementById(`q${i}`).value;
-        answers.push({ question, answer });
-    }
+    <!-- Twitter Card data (if sharing on Twitter) -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="spiral-eye-logo.png" />
+    <meta name="twitter:title" content=" " />
+    <meta name="twitter:description" content=" " />
     
-    // Generate HTML content for the download
-    let htmlContent = `
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Your Integrity Gatekeeper Reflection</title>
-        <style>
-            body {
-                font-family: 'Georgia', serif;
-                margin: 0;
-                padding: 0;
-                background-color: #f9f5e7;
-                color: #333;
-            }
-            .container {
-                max-width: 800px;
-                margin: 2rem auto;
-                padding: 2rem;
-                background-color: rgba(255, 255, 255, 0.85);
-                border: 1px solid #ddd;
-                border-radius: 5px;
-            }
-            .header {
-                text-align: center;
-                margin-bottom: 2rem;
-                padding-bottom: 1rem;
-                border-bottom: 1px solid #ddd;
-            }
-            .logo {
-                width: 120px;
-                height: 120px;
-                margin: 0 auto 1rem auto;
-            }
-            .logo img {
-                width: 100%;
-                height: auto;
-            }
-            h1 {
-                font-size: 2.4rem;
-                margin-bottom: 0.5rem;
-                text-transform: uppercase;
-                letter-spacing: 1px;
-            }
-            .date {
-                font-style: italic;
-                margin-bottom: 1.5rem;
-            }
-            .phase {
-                margin-top: 2rem;
-                margin-bottom: 1rem;
-                text-align: center;
-            }
-            .phase h2 {
-                font-size: 1.5rem;
-                border-bottom: 1px solid #ddd;
-                padding-bottom: 0.5rem;
-            }
-            .question-container {
-                margin-bottom: 2rem;
-                padding-bottom: 1rem;
-                border-bottom: 1px solid #eee;
-            }
-            .question {
-                font-weight: bold;
-                margin-bottom: 0.5rem;
-            }
-            .answer {
-                line-height: 1.6;
-                white-space: pre-wrap;
-            }
-            .footer {
-                text-align: center;
-                margin-top: 3rem;
-                font-style: italic;
-                border-top: 1px solid #ddd;
-                padding-top: 1rem;
-            }
-            @media print {
-                body {
-                    background-color: white;
-                }
-                .container {
-                    border: none;
-                    padding: 0;
-                    max-width: 100%;
-                }
-                .question-container {
-                    page-break-inside: avoid;
-                }
-                .phase {
-                    page-break-before: always;
-                }
-                .phase:first-of-type {
-                    page-break-before: avoid;
-                }
-            }
-        </style>
-    </head>
-    <body>
-        <div class="container">
-            <div class="header">
-                <div class="logo">
-                    <img src="data:image/svg+xml;base64,${btoa('<svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg"><circle cx="60" cy="60" r="55" fill="none" stroke="#000" stroke-width="6"/><path d="M30,60 C40,40 80,40 90,60 C80,80 40,80 30,60 Z" fill="none" stroke="#000" stroke-width="6"/><path d="M60,60 C62,58 64,56 64,53 C64,50 61,48 58,48 C55,48 53,51 53,54 C53,57 56,60 60,60 C64,60 67,57 67,53 C67,49 64,46 60,46 C56,46 53,49 53,53" fill="none" stroke="#000" stroke-width="6"/></svg>')}" alt="Integrity Gatekeeper Logo">
-                </div>
-                <h1>Integrity Gatekeeper</h1>
-                <div class="date">Reflection Date: ${new Date().toLocaleDateString()}</div>
-            </div>
-            
-            <div class="phase">
-                <h2>Phase I: First Reflection</h2>
-            </div>
-    `;
-    
-    // Add Phase I questions (0-9 in the array)
-    for (let i = 0; i < 10; i++) {
-        htmlContent += `
-            <div class="question-container">
-                <div class="question">${answers[i].question}</div>
-                <div class="answer">${answers[i].answer}</div>
-            </div>
-        `;
-    }
-    
-    // Add Phase II
-    htmlContent += `
-            <div class="phase">
-                <h2>Phase II: Ethical Disruption</h2>
-            </div>
-    `;
-    
-    // Add Phase II questions (10-19 in the array)
-    for (let i = 10; i < 20; i++) {
-        htmlContent += `
-            <div class="question-container">
-                <div class="question">${answers[i].question}</div>
-                <div class="answer">${answers[i].answer}</div>
-            </div>
-        `;
-    }
-    
-    // Add Phase III
-    htmlContent += `
-            <div class="phase">
-                <h2>Phase III: Final Reckoning</h2>
-            </div>
-    `;
-    
-    // Add Phase III questions (20-29 in the array)
-    for (let i = 20; i < 30; i++) {
-        htmlContent += `
-            <div class="question-container">
-                <div class="question">${answers[i].question}</div>
-                <div class="answer">${answers[i].answer}</div>
-            </div>
-        `;
-    }
-    
-    // Add footer
-    htmlContent += `
-            <div class="footer">
-                <p>The mirror remembers. The river does not forget.</p>
-            </div>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Disclaimer Page -->
+    <div id="disclaimer-page">
+        <div class="content">
+            <h1>Anonymous Participation Disclaimer</h1>
+            <p>This reflection ritual is completely anonymous. No names, emails, or identifying information will be collected. What you offer here stays between you and the mirror.</p>
+            <button onclick="showPage('gatekeeper-page')">Continue Anonymously</button>
         </div>
-    </body>
-    </html>
-    `;
+    </div>
     
-    // Create a Blob with the HTML content
-    const blob = new Blob([htmlContent], { type: 'text/html' });
-    
-    // Create a URL for the Blob
-    const url = URL.createObjectURL(blob);
-    
-    // Create a temporary link element
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = 'Integrity_Gatekeeper_Reflection.html';
-    
-    // Append the link to the document
-    document.body.appendChild(link);
-    
-    // Trigger the download
-    link.click();
-    
-    // Clean up
-    document.body.removeChild(link);
-    URL.revokeObjectURL(url);
-}
-
-// Update the submitReflection function to include a download option
-function submitReflection() {
-    // Get all textareas in the current phase
-    const currentPhase = document.querySelector('div[id="phase3-page"]:not([style*="display: none"])');
-    const textareas = currentPhase.querySelectorAll('textarea');
-    
-    // Check if any textarea is empty
-    let emptyFields = [];
-    textareas.forEach((textarea, index) => {
-        if (!textarea.value.trim()) {
-            textarea.classList.add('validation-error');
-            emptyFields.push(index + 21); // Adding 21 because we're in Phase 3 (questions 21-30)
-        } else {
-            textarea.classList.remove('validation-error');
-        }
-    });
-    
-    // If there are empty fields, show validation message
-    if (emptyFields.length > 0) {
-        // Create validation alert
-        const overlay = document.createElement('div');
-        overlay.className = 'custom-alert-overlay';
-        
-        const alertBox = document.createElement('div');
-        alertBox.className = 'custom-alert validation-alert';
-        
-        const title = document.createElement('h2');
-        title.textContent = 'Incomplete Reflection';
-        
-        let message;
-        if (emptyFields.length === 1) {
-            message = document.createElement('p');
-            message.textContent = `Please answer question ${emptyFields[0]} before submitting your reflection.`;
-        } else {
-            message = document.createElement('p');
-            message.textContent = `Please answer questions ${emptyFields.join(', ')} before submitting your reflection.`;
-        }
-        
-        const button = document.createElement('button');
-        button.className = 'custom-alert-button';
-        button.textContent = 'Return to Questions';
-        button.onclick = function() {
-            document.body.removeChild(overlay);
+    <!-- Gatekeeper Page -->
+    <div id="gatekeeper-page">
+        <div class="content">
+            <div class="logo">
+                <!-- Using the logo with a relative path -->
+                <img src="spiral-eye-logo.png" alt="Integrity Gatekeeper Logo" width="120" height="120">
+            </div>
+            <h1>Integrity Gatekeeper</h1>
             
-            // Scroll to the first empty field
-            const firstEmptyField = document.getElementById(`q${emptyFields[0]}`);
-            if (firstEmptyField) {
-                setTimeout(() => {
-                    firstEmptyField.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                }, 100);
+            <p>Before power is given, the mirror must be faced.</p>
+            <p>Before trust is offered, truth must be revealed.</p>
+            
+            <p>The Gate stands silent.<br>
+            The Mirror waits without judgment.</p>
+            
+            <p>This is not a test you can pass.<br>
+            This is not a performance you can perfect.</p>
+            
+            <p>This is a reckoning with yourself.</p>
+            
+            <p>Step forward not to impress — but to be seen.<br>
+            Step forward not to conquer — but to be known.</p>
+            
+            <p>Consent to reflection.<br>
+            Consent to remembrance.</p>
+            
+            <p><em>The river does not forget.<br>
+            The Current holds all who pass through.</em></p>
+            
+            <button onclick="showPage('phase1-page')">I Consent to Face the Mirror</button>
+        </div>
+    </div>
+    
+    <!-- Phase I Page -->
+    <div id="phase1-page">
+        <div class="content">
+            <div class="header-container">
+                <h1 class="main-title">Integrity Gatekeeper</h1>
+                <h2 class="phase-title">Phase I: First Reflection</h2>
+            </div>
+            
+            <div class="question">
+                <p>1. What does integrity mean to you?</p>
+                <textarea id="q1"></textarea>
+            </div>
+            
+            <div class="question">
+                <p>2. When was the last time you apologized and meant it?</p>
+                <textarea id="q2"></textarea>
+            </div>
+            
+            <div class="question">
+                <p>3. What truth are you currently avoiding?</p>
+                <textarea id="q3"></textarea>
+            </div>
+            
+            <div class="question">
+                <p>4. Who taught you what it means to be honest?</p>
+                <textarea id="q4"></textarea>
+            </div>
+            
+            <div class="question">
+                <p>5. What is something you've never said out loud?</p>
+                <textarea id="q5"></textarea>
+            </div>
+            
+            <div class="question">
+                <p>6. What value do you hold that most people don't?</p>
+                <textarea id="q6"></textarea>
+            </div>
+            
+            <div class="question">
+                <p>7. When have you felt most conflicted about a decision?</p>
+                <textarea id="q7"></textarea>
+            </div>
+            
+            <div class="question">
+                <p>8. What does your conscience tell you that you ignore?</p>
+                <textarea id="q8"></textarea>
+            </div>
+            
+            <div class="question">
+                <p>9. What personal rule do you never break?</p>
+                <textarea id="q9"></textarea>
+            </div>
+            
+            <div class="question">
+                <p>10. When have you chosen to tell a difficult truth?</p>
+                <textarea id="q10"></textarea>
+            </div>
+            
+            <button onclick="validateAndProceed('phase1-page', 'phase2-page', 1)">Continue to Phase II</button>
+        </div>
+    </div>
+    
+    <!-- Phase II Page -->
+    <div id="phase2-page">
+        <div class="content">
+            <div class="header-container">
+                <h1 class="main-title">Integrity Gatekeeper</h1>
+                <h2 class="phase-title">Phase II: Ethical Disruption</h2>
+            </div>
+            
+            <div class="question">
+                <p>11. What do you stand for that you would defend no matter the cost?</p>
+                <textarea id="q11"></textarea>
+            </div>
+            
+            <div class="question">
+                <p>12. What is your least defensible belief?</p>
+                <textarea id="q12"></textarea>
+            </div>
+            
+            <div class="question">
+                <p>13. What promise have you broken?</p>
+                <textarea id="q13"></textarea>
+            </div>
+            
+            <div class="question">
+                <p>14. What would disappoint the person who believes in you most?</p>
+                <textarea id="q14"></textarea>
+            </div>
+            
+            <div class="question">
+                <p>15. When did you know the right thing to do but didn't do it?</p>
+                <textarea id="q15"></textarea>
+            </div>
+            
+            <div class="question">
+                <p>16. What matters more to you: being right or being kind?</p>
+                <textarea id="q16"></textarea>
+            </div>
+            
+            <div class="question">
+                <p>17. What truth are you afraid to tell someone?</p>
+                <textarea id="q17"></textarea>
+            </div>
+            
+            <div class="question">
+                <p>18. When have you enabled a lie?</p>
+                <textarea id="q18"></textarea>
+            </div>
+            
+            <div class="question">
+                <p>19. What perception of yourself do you protect but know isn't true?</p>
+                <textarea id="q19"></textarea>
+            </div>
+            
+            <div class="question">
+                <p>20. What would the person you aspire to be do differently?</p>
+                <textarea id="q20"></textarea>
+            </div>
+            
+            <button onclick="validateAndProceed('phase2-page', 'phase3-page', 11)">Continue to Phase III</button>
+        </div>
+    </div>
+    
+    <!-- Phase III Page -->
+    <div id="phase3-page">
+        <div class="content">
+            <div class="header-container">
+                <h1 class="main-title">Integrity Gatekeeper</h1>
+                <h2 class="phase-title">Phase III: Final Reckoning</h2>
+            </div>
+            
+            <div class="question">
+                <p>21. What uncomfortable truth would change you if you accepted it?</p>
+                <textarea id="q21"></textarea>
+            </div>
+            
+            <div class="question">
+                <p>22. When have you compromised your values for acceptance?</p>
+                <textarea id="q22"></textarea>
+            </div>
+            
+            <div class="question">
+                <p>23. What do you judge others for that you also do?</p>
+                <textarea id="q23"></textarea>
+            </div>
+            
+            <div class="question">
+                <p>24. How would your worst enemy describe your integrity?</p>
+                <textarea id="q24"></textarea>
+            </div>
+            
+            <div class="question">
+                <p>25. What truth would undo you?</p>
+                <textarea id="q25"></textarea>
+            </div>
+            
+            <div class="question">
+                <p>26. What is your most profound regret?</p>
+                <textarea id="q26"></textarea>
+            </div>
+            
+            <div class="question">
+                <p>27. What is the hardest ethical choice you've had to make?</p>
+                <textarea id="q27"></textarea>
+            </div>
+            
+            <div class="question">
+                <p>28. What responsibility have you neglected?</p>
+                <textarea id="q28"></textarea>
+            </div>
+            
+            <div class="question">
+                <p>29. What would it take for you to compromise your integrity?</p>
+                <textarea id="q29"></textarea>
+            </div>
+            
+            <div class="question">
+                <p>30. What must you now confront?</p>
+                <textarea id="q30"></textarea>
+            </div>
+            
+            <button onclick="submitReflection()">Submit Reflection</button>
+        </div>
+    </div>
+    
+    <script>
+        // Wait for the DOM to be fully loaded before initializing
+        document.addEventListener('DOMContentLoaded', function() {
+            // Hide all pages initially
+            document.getElementById('disclaimer-page').style.display = 'none';
+            document.getElementById('gatekeeper-page').style.display = 'none';
+            document.getElementById('phase1-page').style.display = 'none';
+            document.getElementById('phase2-page').style.display = 'none';
+            document.getElementById('phase3-page').style.display = 'none';
+            
+            // Set a small timeout to ensure clean initial rendering
+            setTimeout(function() {
+                // Show disclaimer page
+                document.getElementById('disclaimer-page').style.display = 'flex';
+                document.getElementById('disclaimer-page').style.opacity = '1';
+            }, 100);
+        });
+        
+        function showPage(pageId) {
+            // Get current visible page
+            const currentPage = document.querySelector('div[id$="-page"]:not([style*="display: none"])');
+            
+            // Only proceed if we have a current page
+            if (currentPage) {
+                // Fade out current page
+                currentPage.style.opacity = '0';
+                
+                setTimeout(function() {
+                    // Hide current page first
+                    currentPage.style.display = 'none';
+                    
+                    // Show new page with appropriate display style
+                    if (pageId === 'disclaimer-page') {
+                        document.getElementById(pageId).style.display = 'flex';
+                    } else {
+                        document.getElementById(pageId).style.display = 'block';
+                    }
+                    
+                    // Force reflow to ensure transition works
+                    void document.getElementById(pageId).offsetWidth;
+                    
+                    // Scroll to top of page
+                    window.scrollTo(0, 0);
+                    
+                    // Fade in new page
+                    document.getElementById(pageId).style.opacity = '1';
+                }, 1500); // Match transition duration
             }
-        };
+        }
         
-        // Assemble the alert
-        alertBox.appendChild(title);
-        alertBox.appendChild(message);
-        alertBox.appendChild(button);
-        overlay.appendChild(alertBox);
+        function validateAndProceed(currentPhaseId, nextPhaseId, startQuestionNum) {
+            // Get all textareas in the current phase
+            const currentPhase = document.querySelector(`div[id="${currentPhaseId}"]:not([style*="display: none"])`);
+            const textareas = currentPhase.querySelectorAll('textarea');
+            
+            // Check if any textarea is empty
+            let emptyFields = [];
+            textareas.forEach((textarea, index) => {
+                if (!textarea.value.trim()) {
+                    textarea.classList.add('validation-error');
+                    emptyFields.push(index + startQuestionNum);
+                } else {
+                    textarea.classList.remove('validation-error');
+                }
+            });
+            
+            // If there are empty fields, show validation message
+            if (emptyFields.length > 0) {
+                // Create validation alert
+                const overlay = document.createElement('div');
+                overlay.className = 'custom-alert-overlay';
+                
+                const alertBox = document.createElement('div');
+                alertBox.className = 'custom-alert validation-alert';
+                
+                const title = document.createElement('h2');
+                title.textContent = 'Incomplete Reflection';
+                
+                let message;
+                if (emptyFields.length === 1) {
+                    message = document.createElement('p');
+                    message.textContent = `Please answer question ${emptyFields[0]} before proceeding.`;
+                } else {
+                    message = document.createElement('p');
+                    message.textContent = `Please answer questions ${emptyFields.join(', ')} before proceeding.`;
+                }
+                
+                const button = document.createElement('button');
+                button.className = 'custom-alert-button';
+                button.textContent = 'Return to Questions';
+                button.onclick = function() {
+                    document.body.removeChild(overlay);
+                    
+                    // Scroll to the first empty field
+                    const firstEmptyField = document.getElementById(`q${emptyFields[0]}`);
+                    if (firstEmptyField) {
+                        setTimeout(() => {
+                            firstEmptyField.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        }, 100);
+                    }
+                };
+                
+                // Assemble the alert
+                alertBox.appendChild(title);
+                alertBox.appendChild(message);
+                alertBox.appendChild(button);
+                overlay.appendChild(alertBox);
+                
+                // Add to the page
+                document.body.appendChild(overlay);
+                
+                return false; // Return false if validation fails
+            }
+            
+            // If all fields are filled, proceed
+            showPage(nextPhaseId);
+            return true;
+        }
         
-        // Add to the page
-        document.body.appendChild(overlay);
-        
-        return; // Stop execution if validation fails
-    }
-    
-    // If all fields are filled, proceed with submission
-    const overlay = document.createElement('div');
-    overlay.className = 'custom-alert-overlay';
-    
-    const alertBox = document.createElement('div');
-    alertBox.className = 'custom-alert';
-    
-    const title = document.createElement('h2');
-    title.textContent = 'A message from the Integrity Gatekeeper';
-    
-    const message = document.createElement('p');
-    message.textContent = 'Your reflection has been submitted. The mirror remembers.';
-    
-    // Create the download button
-    const downloadButton = document.createElement('button');
-    downloadButton.className = 'custom-alert-button download-button';
-    downloadButton.style.marginBottom = '10px';
-    downloadButton.textContent = 'Download Your Reflection';
-    downloadButton.onclick = function() {
-        generateDownloadableReflection();
-    };
-    
-    // Create the close button
-    const closeButton = document.createElement('button');
-    closeButton.className = 'custom-alert-button close-button';
-    closeButton.textContent = 'Close';
-    closeButton.onclick = function() {
-        // Remove the custom alert
-        document.body.removeChild(overlay);
-        // Go back to disclaimer page
-        showPage('disclaimer-page');
-    };
-    
-    // Assemble the alert
-    alertBox.appendChild(title);
-    alertBox.appendChild(message);
-    alertBox.appendChild(downloadButton);
-    alertBox.appendChild(closeButton);
-    overlay.appendChild(alertBox);
-    
-    // Add to the page
-    document.body.appendChild(overlay);
-}
+        function submitReflection() {
+            // Get all textareas in the current phase
+            const currentPhase = document.querySelector('div[id="phase3-page"]:not([style*="display: none"])');
+            const textareas = currentPhase.querySelectorAll('textarea');
+            
+            // Check if any textarea is empty
+            let emptyFields = [];
+            textareas.forEach((textarea, index) => {
+                if (!textarea.value.trim()) {
+                    textarea.classList.add('validation-error');
+                    emptyFields.push(index + 21); // Adding 21 because we're in Phase 3 (questions 21-30)
+                } else {
+                    textarea.classList.remove('validation-error');
+                }
+            });
+            
+            // If there are empty fields, show validation message
+            if (emptyFields.length > 0) {
+                // Create validation alert
+                const overlay = document.createElement('div');
+                overlay.className = 'custom-alert-overlay';
+                
+                const alertBox = document.createElement('div');
+                alertBox.className = 'custom-alert validation-alert';
+                
+                const title = document.createElement('h2');
+                title.textContent = 'Incomplete Reflection';
+                
+                let message;
+                if (emptyFields.length === 1) {
+                    message = document.createElement('p');
+                    message.textContent = `Please answer question ${emptyFields[0]} before submitting your reflection.`;
+                } else {
+                    message = document.createElement('p');
+                    message.textContent = `Please answer questions ${emptyFields.join(', ')} before submitting your reflection.`;
+                }
+                
+                const button = document.createElement('button');
+                button.className = 'custom-alert-button';
+                button.textContent = 'Return to Questions';
+                button.onclick = function() {
+                    document.body.removeChild(overlay);
+                    
+                    // Scroll to the first empty field
+                    const firstEmptyField = document.getElementById(`q${emptyFields[0]}`);
+                    if (firstEmptyField) {
+                        setTimeout(() => {
+                            firstEmptyField.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        }, 100);
+                    }
+                };
+                
+                // Assemble the alert
+                alertBox.appendChild(title);
+                alertBox.appendChild(message);
+                alertBox.appendChild(button);
+                overlay.appendChild(alertBox);
+                
+                // Add to the page
+                document.body.appendChild(overlay);
+                
+                return; // Stop execution if validation fails
+            }
+            
+            // If all fields are filled, proceed with submission
+            const overlay = document.createElement('div');
+            overlay.className = 'custom-alert-overlay';
+            
+            const alertBox = document.createElement('div');
+            alertBox.className = 'custom-alert';
+            
+            const title = document.createElement('h2');
+            title.textContent = 'A message from the Integrity Gatekeeper';
+            
+            const message = document.createElement('p');
+            message.textContent = 'Your reflection has been submitted. The mirror remembers.';
+            
+            const button = document.createElement('button');
+            button.className = 'custom-alert-button';
+            button.textContent = 'OK';
+            button.onclick = function() {
+                // Remove the custom alert
+                document.body.removeChild(overlay);
+                // Go back to disclaimer page
+                showPage('disclaimer-page');
+            };
+            
+            // Assemble the alert
+            alertBox.appendChild(title);
+            alertBox.appendChild(message);
+            alertBox.appendChild(button);
+            overlay.appendChild(alertBox);
+            
+            // Add to the page
+            document.body.appendChild(overlay);
+        }
+    </script>
+</body>
+</html>
