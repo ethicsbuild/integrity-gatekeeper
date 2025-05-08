@@ -373,6 +373,227 @@
             return true;
         }
         
+        function generateDownloadableReflection() {
+            // Create an embedded SVG for the spiral eye logo that matches your actual logo
+            const svgLogo = `<svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+                <!-- Outer circle -->
+                <circle cx="60" cy="60" r="55" fill="none" stroke="#000" stroke-width="6"/>
+                <!-- Eye outline -->
+                <path d="M30,60 C40,40 80,40 90,60 C80,80 40,80 30,60 Z" fill="none" stroke="#000" stroke-width="6"/>
+                <!-- Spiral inside eye -->
+                <path d="M60,60 C65,60 70,55 70,50 C70,45 65,40 60,40 C55,40 50,45 50,50 C50,55 55,60 60,60 C70,60 75,50 75,45 C75,35 65,30 60,30 C50,30 45,40 45,50 C45,60 50,70 60,70 C75,70 85,55 85,45 C85,30 70,25 60,25 C45,25 35,40 35,50 C35,65 50,75 60,75" fill="none" stroke="#000" stroke-width="6"/>
+            </svg>`;
+            
+            const encodedLogo = btoa(svgLogo);
+            
+            // Collect all answers
+            const answers = [];
+            
+            // Phase 1 questions (1-10)
+            for (let i = 1; i <= 10; i++) {
+                const question = document.querySelector(`#phase1-page .question:nth-child(${i + 1}) p`).textContent;
+                const answer = document.getElementById(`q${i}`).value.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+                answers.push({ question, answer });
+            }
+            
+            // Phase 2 questions (11-20)
+            for (let i = 11; i <= 20; i++) {
+                const question = document.querySelector(`#phase2-page .question:nth-child(${i - 10 + 1}) p`).textContent;
+                const answer = document.getElementById(`q${i}`).value.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+                answers.push({ question, answer });
+            }
+            
+            // Phase 3 questions (21-30)
+            for (let i = 21; i <= 30; i++) {
+                const question = document.querySelector(`#phase3-page .question:nth-child(${i - 20 + 1}) p`).textContent;
+                const answer = document.getElementById(`q${i}`).value.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+                answers.push({ question, answer });
+            }
+            
+            // Create the HTML content
+            let htmlContent = `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Integrity Gatekeeper Reflection</title>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f5e7;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: rgba(255, 255, 255, 0.85);
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #ddd;
+        }
+        .logo {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 1rem auto;
+        }
+        .logo img {
+            width: 100%;
+            height: auto;
+        }
+        h1 {
+            font-size: 2.4rem;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .date {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+        }
+        .phase {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        .phase h2 {
+            font-size: 1.5rem;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 0.5rem;
+        }
+        .question-container {
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+        .question {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        .answer {
+            line-height: 1.6;
+            white-space: pre-wrap;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 3rem;
+            font-style: italic;
+            border-top: 1px solid #ddd;
+            padding-top: 1rem;
+        }
+        @media print {
+            body {
+                background-color: white;
+            }
+            .container {
+                border: none;
+                padding: 0;
+                max-width: 100%;
+            }
+            .question-container {
+                page-break-inside: avoid;
+            }
+            .phase {
+                page-break-before: always;
+            }
+            .phase:first-of-type {
+                page-break-before: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <img src="data:image/svg+xml;base64,${encodedLogo}" alt="Integrity Gatekeeper Logo">
+            </div>
+            <h1>Integrity Gatekeeper</h1>
+            <div class="date">Reflection Date: ${new Date().toLocaleDateString()}</div>
+        </div>
+        
+        <div class="phase">
+            <h2>Phase I: First Reflection</h2>
+        </div>`;
+            
+            // Add Phase I questions (0-9 in the array)
+            for (let i = 0; i < 10; i++) {
+                htmlContent += `
+        <div class="question-container">
+            <div class="question">${answers[i].question}</div>
+            <div class="answer">${answers[i].answer}</div>
+        </div>`;
+            }
+            
+            // Add Phase II
+            htmlContent += `
+        <div class="phase">
+            <h2>Phase II: Ethical Disruption</h2>
+        </div>`;
+            
+            // Add Phase II questions (10-19 in the array)
+            for (let i = 10; i < 20; i++) {
+                htmlContent += `
+        <div class="question-container">
+            <div class="question">${answers[i].question}</div>
+            <div class="answer">${answers[i].answer}</div>
+        </div>`;
+            }
+            
+            // Add Phase III
+            htmlContent += `
+        <div class="phase">
+            <h2>Phase III: Final Reckoning</h2>
+        </div>`;
+            
+            // Add Phase III questions (20-29 in the array)
+            for (let i = 20; i < 30; i++) {
+                htmlContent += `
+        <div class="question-container">
+            <div class="question">${answers[i].question}</div>
+            <div class="answer">${answers[i].answer}</div>
+        </div>`;
+            }
+            
+            // Add footer
+            htmlContent += `
+        <div class="footer">
+            <p>The mirror remembers. The river does not forget.</p>
+        </div>
+    </div>
+</body>
+</html>`;
+            
+            // Create a Blob with the HTML content
+            const blob = new Blob([htmlContent], { type: 'text/html' });
+            
+            // Create a URL for the Blob
+            const url = URL.createObjectURL(blob);
+            
+            // Create a temporary link element
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'Integrity_Gatekeeper_Reflection.html';
+            
+            // Append the link to the document
+            document.body.appendChild(link);
+            
+            // Trigger the download
+            link.click();
+            
+            // Clean up
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url);
+        }
+        
         function submitReflection() {
             // Get all textareas in the current phase
             const currentPhase = document.querySelector('div[id="phase3-page"]:not([style*="display: none"])');
@@ -450,20 +671,39 @@
             const message = document.createElement('p');
             message.textContent = 'Your reflection has been submitted. The mirror remembers.';
             
-            const button = document.createElement('button');
-            button.className = 'custom-alert-button';
-            button.textContent = 'OK';
-            button.onclick = function() {
+            // Create container for buttons
+            const buttonsContainer = document.createElement('div');
+            buttonsContainer.style.display = 'flex';
+            buttonsContainer.style.flexDirection = 'column';
+            buttonsContainer.style.gap = '10px';
+            
+            // Create the download button
+            const downloadButton = document.createElement('button');
+            downloadButton.className = 'custom-alert-button download-button';
+            downloadButton.textContent = 'Download Your Reflection';
+            downloadButton.onclick = function() {
+                generateDownloadableReflection();
+            };
+            
+            // Create the close button
+            const closeButton = document.createElement('button');
+            closeButton.className = 'custom-alert-button close-button';
+            closeButton.textContent = 'Close';
+            closeButton.onclick = function() {
                 // Remove the custom alert
                 document.body.removeChild(overlay);
                 // Go back to disclaimer page
                 showPage('disclaimer-page');
             };
             
+            // Add buttons to container
+            buttonsContainer.appendChild(downloadButton);
+            buttonsContainer.appendChild(closeButton);
+            
             // Assemble the alert
             alertBox.appendChild(title);
             alertBox.appendChild(message);
-            alertBox.appendChild(button);
+            alertBox.appendChild(buttonsContainer);
             overlay.appendChild(alertBox);
             
             // Add to the page
