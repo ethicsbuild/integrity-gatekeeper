@@ -24,6 +24,232 @@
     <meta name="twitter:description" content=" " />
     
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Base styles */
+        body {
+            font-family: 'Georgia', serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f5e7;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        [id$="-page"] {
+            display: none;
+            opacity: 0;
+            transition: opacity 1.5s ease;
+        }
+        
+        .content {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: rgba(255, 255, 255, 0.85);
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        h2 {
+            text-align: center;
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: #555;
+        }
+        
+        button {
+            display: block;
+            margin: 1.5rem auto 0;
+            padding: 0.8rem 1.5rem;
+            background-color: #2c3e50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        button:hover {
+            background-color: #1a252f;
+        }
+        
+        #disclaimer-page {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        
+        #disclaimer-page .content {
+            max-width: 600px;
+        }
+        
+        .logo {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        
+        p {
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        
+        .question {
+            margin-bottom: 2rem;
+        }
+        
+        .question p {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            text-align: left;
+        }
+        
+        textarea {
+            width: 100%;
+            min-height: 80px;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            resize: vertical;
+            font-family: 'Georgia', serif;
+            font-size: 1rem;
+            line-height: 1.5;
+            transition: border-color 0.3s;
+        }
+        
+        textarea:focus {
+            outline: none;
+            border-color: #2c3e50;
+        }
+        
+        .validation-error {
+            border-color: #e74c3c;
+            background-color: rgba(231, 76, 60, 0.05);
+        }
+        
+        .header-container {
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        .main-title {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .phase-title {
+            font-size: 1.4rem;
+            color: #555;
+        }
+        
+        /* Custom alert styles */
+        .custom-alert-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        
+        .custom-alert {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 5px;
+            max-width: 90%;
+            width: 500px;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+        
+        .validation-alert {
+            border-left: 5px solid #e74c3c;
+        }
+        
+        .custom-alert h2 {
+            margin-top: 0;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .custom-alert-button {
+            display: inline-block;
+            margin-top: 1.5rem;
+            padding: 0.7rem 1.2rem;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .custom-alert-button:hover {
+            background-color: #2980b9;
+        }
+        
+        .download-button {
+            background-color: #2ecc71;
+        }
+        
+        .download-button:hover {
+            background-color: #27ae60;
+        }
+        
+        .close-button {
+            background-color: #7f8c8d;
+        }
+        
+        .close-button:hover {
+            background-color: #6c7a89;
+        }
+        
+        /* Additional styles for the autosave notification */
+        .restore-notification {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 10px 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            transition: opacity 0.5s;
+        }
+        
+        .restore-message {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .clear-data-button {
+            background-color: #ff4444;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+        
+        .clear-data-button:hover {
+            background-color: #cc0000;
+        }
+    </style>
 </head>
 <body>
     <!-- Disclaimer Page -->
@@ -78,52 +304,52 @@
             
             <div class="question">
                 <p>1. What does integrity mean to you?</p>
-                <textarea id="q1"></textarea>
+                <textarea id="q1" class="autosave-field"></textarea>
             </div>
             
             <div class="question">
                 <p>2. When was the last time you apologized and meant it?</p>
-                <textarea id="q2"></textarea>
+                <textarea id="q2" class="autosave-field"></textarea>
             </div>
             
             <div class="question">
                 <p>3. What truth are you currently avoiding?</p>
-                <textarea id="q3"></textarea>
+                <textarea id="q3" class="autosave-field"></textarea>
             </div>
             
             <div class="question">
                 <p>4. Who taught you what it means to be honest?</p>
-                <textarea id="q4"></textarea>
+                <textarea id="q4" class="autosave-field"></textarea>
             </div>
             
             <div class="question">
                 <p>5. What is something you've never said out loud?</p>
-                <textarea id="q5"></textarea>
+                <textarea id="q5" class="autosave-field"></textarea>
             </div>
             
             <div class="question">
                 <p>6. What value do you hold that most people don't?</p>
-                <textarea id="q6"></textarea>
+                <textarea id="q6" class="autosave-field"></textarea>
             </div>
             
             <div class="question">
                 <p>7. When have you felt most conflicted about a decision?</p>
-                <textarea id="q7"></textarea>
+                <textarea id="q7" class="autosave-field"></textarea>
             </div>
             
             <div class="question">
                 <p>8. What does your conscience tell you that you ignore?</p>
-                <textarea id="q8"></textarea>
+                <textarea id="q8" class="autosave-field"></textarea>
             </div>
             
             <div class="question">
                 <p>9. What personal rule do you never break?</p>
-                <textarea id="q9"></textarea>
+                <textarea id="q9" class="autosave-field"></textarea>
             </div>
             
             <div class="question">
                 <p>10. When have you chosen to tell a difficult truth?</p>
-                <textarea id="q10"></textarea>
+                <textarea id="q10" class="autosave-field"></textarea>
             </div>
             
             <button onclick="validateAndProceed('phase1-page', 'phase2-page', 1)">Continue to Phase II</button>
@@ -140,52 +366,52 @@
             
             <div class="question">
                 <p>11. What do you stand for that you would defend no matter the cost?</p>
-                <textarea id="q11"></textarea>
+                <textarea id="q11" class="autosave-field"></textarea>
             </div>
             
             <div class="question">
                 <p>12. What is your least defensible belief?</p>
-                <textarea id="q12"></textarea>
+                <textarea id="q12" class="autosave-field"></textarea>
             </div>
             
             <div class="question">
                 <p>13. What promise have you broken?</p>
-                <textarea id="q13"></textarea>
+                <textarea id="q13" class="autosave-field"></textarea>
             </div>
             
             <div class="question">
                 <p>14. What would disappoint the person who believes in you most?</p>
-                <textarea id="q14"></textarea>
+                <textarea id="q14" class="autosave-field"></textarea>
             </div>
             
             <div class="question">
                 <p>15. When did you know the right thing to do but didn't do it?</p>
-                <textarea id="q15"></textarea>
+                <textarea id="q15" class="autosave-field"></textarea>
             </div>
             
             <div class="question">
                 <p>16. What matters more to you: being right or being kind?</p>
-                <textarea id="q16"></textarea>
+                <textarea id="q16" class="autosave-field"></textarea>
             </div>
             
             <div class="question">
                 <p>17. What truth are you afraid to tell someone?</p>
-                <textarea id="q17"></textarea>
+                <textarea id="q17" class="autosave-field"></textarea>
             </div>
             
             <div class="question">
                 <p>18. When have you enabled a lie?</p>
-                <textarea id="q18"></textarea>
+                <textarea id="q18" class="autosave-field"></textarea>
             </div>
             
             <div class="question">
                 <p>19. What perception of yourself do you protect but know isn't true?</p>
-                <textarea id="q19"></textarea>
+                <textarea id="q19" class="autosave-field"></textarea>
             </div>
             
             <div class="question">
                 <p>20. What would the person you aspire to be do differently?</p>
-                <textarea id="q20"></textarea>
+                <textarea id="q20" class="autosave-field"></textarea>
             </div>
             
             <button onclick="validateAndProceed('phase2-page', 'phase3-page', 11)">Continue to Phase III</button>
@@ -202,52 +428,52 @@
             
             <div class="question">
                 <p>21. What uncomfortable truth would change you if you accepted it?</p>
-                <textarea id="q21"></textarea>
+                <textarea id="q21" class="autosave-field"></textarea>
             </div>
             
             <div class="question">
                 <p>22. When have you compromised your values for acceptance?</p>
-                <textarea id="q22"></textarea>
+                <textarea id="q22" class="autosave-field"></textarea>
             </div>
             
             <div class="question">
                 <p>23. What do you judge others for that you also do?</p>
-                <textarea id="q23"></textarea>
+                <textarea id="q23" class="autosave-field"></textarea>
             </div>
             
             <div class="question">
                 <p>24. How would your worst enemy describe your integrity?</p>
-                <textarea id="q24"></textarea>
+                <textarea id="q24" class="autosave-field"></textarea>
             </div>
             
             <div class="question">
                 <p>25. What truth would undo you?</p>
-                <textarea id="q25"></textarea>
+                <textarea id="q25" class="autosave-field"></textarea>
             </div>
             
             <div class="question">
                 <p>26. What is your most profound regret?</p>
-                <textarea id="q26"></textarea>
+                <textarea id="q26" class="autosave-field"></textarea>
             </div>
             
             <div class="question">
                 <p>27. What is the hardest ethical choice you've had to make?</p>
-                <textarea id="q27"></textarea>
+                <textarea id="q27" class="autosave-field"></textarea>
             </div>
             
             <div class="question">
                 <p>28. What responsibility have you neglected?</p>
-                <textarea id="q28"></textarea>
+                <textarea id="q28" class="autosave-field"></textarea>
             </div>
             
             <div class="question">
                 <p>29. What would it take for you to compromise your integrity?</p>
-                <textarea id="q29"></textarea>
+                <textarea id="q29" class="autosave-field"></textarea>
             </div>
             
             <div class="question">
                 <p>30. What must you now confront?</p>
-                <textarea id="q30"></textarea>
+                <textarea id="q30" class="autosave-field"></textarea>
             </div>
             
             <button onclick="submitReflection()">Submit Reflection</button>
@@ -269,6 +495,12 @@
                 // Show disclaimer page
                 document.getElementById('disclaimer-page').style.display = 'flex';
                 document.getElementById('disclaimer-page').style.opacity = '1';
+                
+                // Setup autosave functionality
+                setupAutosave();
+                
+                // Load any saved form data
+                loadFormData();
             }, 100);
         });
         
@@ -371,6 +603,154 @@
             // If all fields are filled, proceed
             showPage(nextPhaseId);
             return true;
+        }
+        
+        // Autosave functionality
+        function saveFormData() {
+            // Create an object to hold all form data
+            const formData = {};
+            
+            // Get all textarea elements
+            const textareas = document.querySelectorAll('.autosave-field');
+            
+            // Store each textarea's value in the formData object
+            textareas.forEach(textarea => {
+                const id = textarea.id;
+                const value = textarea.value;
+                formData[id] = value;
+            });
+            
+            // Save the data to localStorage as a JSON string
+            localStorage.setItem('integrityGatekeeper_formData', JSON.stringify(formData));
+            
+            // Update the last saved timestamp
+            localStorage.setItem('integrityGatekeeper_lastSaved', new Date().toISOString());
+        }
+        
+        function loadFormData() {
+            // Check if we have saved data
+            const savedData = localStorage.getItem('integrityGatekeeper_formData');
+            
+            if (savedData) {
+                // Parse the saved data back into an object
+                const formData = JSON.parse(savedData);
+                
+                // Loop through all textareas and populate with saved data if available
+                const textareas = document.querySelectorAll('.autosave-field');
+                textareas.forEach(textarea => {
+                    const id = textarea.id;
+                    if (formData[id]) {
+                        textarea.value = formData[id];
+                    }
+                });
+                
+                // Show notification about restored data
+                const lastSaved = localStorage.getItem('integrityGatekeeper_lastSaved');
+                if (lastSaved) {
+                    const lastSavedDate = new Date(lastSaved);
+                    const now = new Date();
+                    const timeDiff = Math.floor((now - lastSavedDate) / (1000 * 60)); // Time difference in minutes
+                    
+                    let timeMessage;
+                    if (timeDiff < 60) {
+                        timeMessage = `${timeDiff} minute${timeDiff !== 1 ? 's' : ''}`;
+                    } else {
+                        const hoursDiff = Math.floor(timeDiff / 60);
+                        if (hoursDiff < 24) {
+                            timeMessage = `${hoursDiff} hour${hoursDiff !== 1 ? 's' : ''}`;
+                        } else {
+                            const daysDiff = Math.floor(hoursDiff / 24);
+                            timeMessage = `${daysDiff} day${daysDiff !== 1 ? 's' : ''}`;
+                        }
+                    }
+                    
+                    showRestoredMessage(`Your progress from ${timeMessage} ago has been restored.`);
+                }
+                
+                return true;
+            }
+            
+            return false;
+        }
+        
+        function showRestoredMessage(message) {
+            // Create elements for the notification
+            const notification = document.createElement('div');
+            notification.className = 'restore-notification';
+            
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'restore-message';
+            
+            const messageText = document.createElement('p');
+            messageText.textContent = message;
+            messageText.style.margin = '0 0 10px 0';
+            
+            const clearButton = document.createElement('button');
+            clearButton.className = 'clear-data-button';
+            clearButton.textContent = 'Clear Saved Data';
+            
+            // Assemble the notification
+            messageDiv.appendChild(messageText);
+            messageDiv.appendChild(clearButton);
+            notification.appendChild(messageDiv);
+            
+            // Add the notification to the body
+            document.body.appendChild(notification);
+            
+            // Add event listener to the clear button
+            clearButton.addEventListener('click', function() {
+                clearFormData();
+                notification.style.opacity = '0';
+                setTimeout(() => {
+                    if (document.body.contains(notification)) {
+                        document.body.removeChild(notification);
+                    }
+                }, 500);
+            });
+            
+            // Automatically remove the notification after 10 seconds
+            setTimeout(() => {
+                notification.style.opacity = '0';
+                setTimeout(() => {
+                    if (document.body.contains(notification)) {
+                        document.body.removeChild(notification);
+                    }
+                }, 500);
+            }, 10000);
+        }
+        
+        function clearFormData() {
+            localStorage.removeItem('integrityGatekeeper_formData');
+            localStorage.removeItem('integrityGatekeeper_lastSaved');
+            
+            // Clear all textareas
+            const textareas = document.querySelectorAll('.autosave-field');
+            textareas.forEach(textarea => {
+                textarea.value = '';
+            });
+        }
+        
+        function setupAutosave() {
+            // Get all textarea elements
+            const textareas = document.querySelectorAll('.autosave-field');
+            
+            // Add input event listeners to each textarea
+            textareas.forEach(textarea => {
+                textarea.addEventListener('input', debounce(saveFormData, 1000)); // Save after 1 second of inactivity
+            });
+        }
+        
+        // Helper function to debounce the autosave
+        function debounce(func, wait) {
+            let timeout;
+            return function() {
+                const context = this;
+                const args = arguments;
+                clearTimeout(timeout);
+                timeout = setTimeout(function() {
+                    func.apply(context, args);
+                }, wait);
+            };
         }
         
         function generateDownloadableReflection() {
@@ -592,6 +972,10 @@
             // Clean up
             document.body.removeChild(link);
             URL.revokeObjectURL(url);
+            
+            // Clear the localStorage data after successful submission and download
+            localStorage.removeItem('integrityGatekeeper_formData');
+            localStorage.removeItem('integrityGatekeeper_lastSaved');
         }
         
         function submitReflection() {
@@ -694,6 +1078,9 @@
                 document.body.removeChild(overlay);
                 // Go back to disclaimer page
                 showPage('disclaimer-page');
+                // Clear the localStorage data after successful submission
+                localStorage.removeItem('integrityGatekeeper_formData');
+                localStorage.removeItem('integrityGatekeeper_lastSaved');
             };
             
             // Add buttons to container
@@ -709,6 +1096,3 @@
             // Add to the page
             document.body.appendChild(overlay);
         }
-    </script>
-</body>
-</html>
